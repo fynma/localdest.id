@@ -68,8 +68,8 @@
     }
 </style>
 
-<nav class="fixed top-0 left-0 right-0 bg-transparent duration-150 z-50 w-full navbar-full">
-    <div class="max-w-screen-xl flex items-center justify-between mx-auto p-4">
+<nav class="fixed top-0 left-0 right-0 bg-transparent duration-150 z-50  navbar-full p-4">
+    <div class="container flex items-center justify-between mx-auto">
         <div class="flex items-center justify-center space-x-3 rtl:space-x-reverse">
             <a href="/" class="flex items-center">
                 <img src="/storage/logo_localdest.png" alt="" srcset="" class="logo-white">
