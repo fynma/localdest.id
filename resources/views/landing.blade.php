@@ -34,20 +34,20 @@
             <source src="{{ asset('storage/video-contoh.mp4') }}" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-        <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-between">
-            <div class="container mx-auto flex flex-col justify-center items-start h-full pl-32">
+        <div class="absolute inset-0 bg-black top-0 bg-opacity-40 flex flex-col justify-between  p-4">
+            <div class="container mx-auto flex flex-col justify-end items-start h-full mb-20">
                 <div class="text-white text-left">
-                    <h1 class="font-poppins text-lg font-bold leading-relaxed lg:text-6xl">
+                    <h1 class="font-poppins text-lg font-bold leading-relaxed lg:text-4xl">
                         Explore and
                         Travel With <br> Your
                         Friend
                     </h1>
-                    <p class="mt-6 mb-8 text-xl sm:mb-12 font-medium ">Lorem ipsum dolor sit amet
+                    <p class="mt-6 mb-8 text-md sm:mb-12 ">Lorem ipsum dolor sit amet
                         consectetur. Elementum nunc adipiscing ac at. Lectus <br> sed justo imperdiet mauris urna ut
                         accumsan. Faucibus arcu odio aliquam rutrum vel mollis.</p>
                 </div>
             </div>
-            <div class="container mx-auto pb-8 flex justify-start pl-32 mb-10">
+            <div class="container mx-auto pb-8 flex justify-start mb-10">
                 <div class="flex items-center space-x-4 video-control">
                     <button id="play-pause"
                         class="w-12 h-12 bg-white/30 rounded-full grid place-items-center hover:bg-white/40 transition">
@@ -132,7 +132,7 @@
         </div>
     </div>   --}}
     {{-- hall size --}}
-    <div class="container mx-auto">
+    <div class="container mx-auto p-4">
         <div class="grid grid-cols-1 lg:grid-cols-2 bg-gray-100 gap-10 hidden">
             <div class="container ml-52 mx-auto lg:order-first">
                 <div class="grid grid-cols-1 gap-8">
