@@ -1,15 +1,4 @@
-// /** @type {import('tailwindcss').Config} */
-// export default {
-//   content: [],
-//   theme: {
-//     extend: {},
-//   },
-//   plugins: [],
-// }
-
-
-/** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
@@ -17,8 +6,15 @@ export default {
     "./node_modules/flowbite/**/*.js"
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'figma-grad-blue': '#026AA2',
+        'figma-grad-toblueend': '#0A3092',
+        'figma-textblue': '#0086C9',
+      },
+    },
   },
   plugins: [
     require('flowbite/plugin')
-]}
+  ]
+};
