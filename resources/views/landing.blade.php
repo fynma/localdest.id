@@ -133,7 +133,7 @@
     </div>   --}}
     {{-- hall size --}}
     <div class="container mx-auto p-4">
-        <div class="grid grid-cols-1 lg:grid-cols-2 bg-gray-100 gap-10 hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-2 bg-gray-100 gap-10 hidden ">
             <div class="container ml-52 mx-auto lg:order-first">
                 <div class="grid grid-cols-1 gap-8">
                     <div class="max-w-md p-8">
