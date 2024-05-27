@@ -1,4 +1,4 @@
-  <footer class="bg-white dark:bg-gray-900 w-full  bottom-0 mt-20   ">
+  {{-- <footer class="bg-white dark:bg-gray-900 w-full  bottom-0 mt-20   ">
         <div class="mx-auto w-full">
             <div class="mx-5 mr-12 w-full md:flex md:justify-between">
                 <div class="mb-6 md:mb-0">
@@ -97,4 +97,4 @@
             </div>
             </div>
         </div>
-    </footer>
+    </footer> --}}

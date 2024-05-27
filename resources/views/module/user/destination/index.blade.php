@@ -14,10 +14,10 @@
 <body>
     @include('package.penunjang.navbar')
 
-    <section id="hero-section" class="relative" style="background: #56B9D9">
-        <img src="/storage/bromo.png" alt="" class="w-full">
+    <section id="hero-section" class="relative" style="">
+        <img src="/storage/bromo.png" alt="" class="w-screen h-screen">
 
-        <div class="absolute inset-0 bg-black bg-opacity-40 p-4 pb-0  lg-bigger:pt-20 lg-bigger:pl-32 flex items-center">
+        <div class="absolute inset-0 bg-black bg-opacity-40 p-4 pb-0 pl-32   lg-bigger:pt-20 flex items-center">
             <div class="container mx-auto flex items-center justify-between" style="margin-top: auto">
                 <div class="text-white text-4xl mb-20">
                     <h1 class="font-poppins font-bold leading-relaxed">
@@ -26,7 +26,7 @@
                     </h1>
                 </div>
                 <div class="text-white w-1/2 mt-12 mb-20">
-                    <p class="text-lg sm:mb-12 font-medium" style="width: 600px">
+                    <p class="text-lg sm:mb-12 font-medium">
                         Lorem ipsum dolor sit amet consectetur. Elementum nunc adipiscing ac at. Lectus sed justo
                         imperdiet mauris urna ut accumsan. Faucibus arcu odio aliquam rutrum vel mollis.
                     </p>
