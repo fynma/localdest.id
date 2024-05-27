@@ -6,17 +6,10 @@
         transition: background-color 0.3s ease;
     }
 
-    /* .navbar.scrolled {
-        background-color: black;
-    } */
-
     .nav-link {
         position: relative;
-        /* color: white; */
         font-size: 0.875rem;
-        /* text-sm */
         font-weight: 600;
-        /* font-semibold */
         display: block;
         padding: 0.5rem 0;
         text-align: center;
@@ -44,11 +37,18 @@
         transform-origin: bottom left;
     }
 
-
     .nav-link:hover,
     .nav-link:focus,
     .nav-link:active {
         color: white;
+    }
+
+    .nav-link.light-mode {
+        color: black !important;
+    }
+
+    .nav-link.light-mode::after {
+        background-color: black !important;
     }
 
     #search-container {
@@ -58,12 +58,10 @@
         overflow: hidden;
         display: flex;
         align-items: center;
-        /* Ensure input aligns properly */
     }
 
     #search-container.active {
         max-width: 200px;
-        /* Adjust as needed */
         opacity: 1;
     }
 </style>
@@ -448,6 +446,7 @@
     const all_changecolor = $('.change-color-area')
     // }
     // var mode;
+
     if (mode == 'light') {
         text_a.removeClass('text-white')
         text_a.addClass('text-black')
@@ -460,11 +459,11 @@
         $('.login-btn').addClass('border-black')
         $('.logo-white').hide()
         $('.logo-light').show()
+        $('.nav-link').css('color', 'black')
+        $('.nav-link').addClass('light-mode')
     } else {
         document.addEventListener('scroll', function() {
-
             if (window.scrollY > 50) {
-                // $('.navbar-full').addClass('')
                 text_a.removeClass('text-white')
                 text_a.addClass('text-black')
                 all_changecolor.removeClass('text-white')
@@ -476,7 +475,7 @@
                 $("#search-icon").attr("stroke", "black");
                 $('.login-btn').removeClass('border-white');
                 $('.login-btn').addClass('border-black')
-
+                $('.nav-link').addClass('light-mode')
             } else {
                 text_a.addClass('text-white')
                 text_a.removeClass('text-black')
@@ -489,9 +488,11 @@
                 $("#search-icon").attr("stroke", "white");
                 $('.login-btn').addClass('border-white');
                 $('.login-btn').removeClass('border-black')
+                $('.nav-link').removeClass('light-mode')
             }
         });
     }
+
     $('#toggle-search').on('click', function() {
         $('#search-container').toggleClass('active');
     });

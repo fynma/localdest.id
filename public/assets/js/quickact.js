@@ -50,6 +50,7 @@ var quick = {
     },
 
     leafletMapShowStatic: function (id, lt, ln) {
+        console.log(id)
         var map = L.map(id).setView([-2.5489, 118.0149], 5);
 
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
