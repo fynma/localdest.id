@@ -7,6 +7,9 @@
         width: 100%;
         height: auto;
     } */
+    .splide__pagination {
+        display: none
+    }
 </style>
 <script>
         //    mode = 'light' // set 'light' untuk perubahan warna dasar navbar
@@ -427,7 +430,7 @@
                                                     <p class="description">Lorem ipsum dolor sit amet consectetur.
                                                         Egest <span class="more" style="display: none;"> nisi orci
                                                             urna cursus sed mala
-                                                            sit.</span></p>
+                                                            sit.<button>detail</button></span></p>
                                                     <button class="see-more text-white font-bold">See More</button>
                                                 </div>
                                             </div>
