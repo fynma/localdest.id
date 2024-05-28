@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 @include('package.headerpack')
-<title>gils</title>
+<title>Localdest - Contact Us</title>
+<link rel="icon" type="image/png" href="/storage/vector/logo-localdest.jpg">
 <style>
     /* .splide__slide img {
         width: 100%;

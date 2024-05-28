@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 @include('package.headerpack')
-<title>gils</title>
+<title>Localdest - Detail Destination</title>
+<link rel="icon" type="image/png" href="/storage/vector/logo-localdest.jpg">
 <style>
     /* .splide__slide img {
         width: 100%;
@@ -12,7 +13,7 @@
     //    mode = 'light' // set 'light' untuk perubahan warna dasar navbar
 </script>
 
-<body>
+<body class="">
     @include('package.penunjang.navbar')
 
     <section id="hero-section" class="relative" style="">
@@ -413,8 +414,8 @@
                         {{-- list hotel --}}
                         <article>
                             <div class="flex mb-4">
-                                <img class="w-24 h-24 me-4 rounded-lg object-cover	"
-                                    src="/storage/hotel.png" alt="">
+                                <img class="w-24 h-24 me-4 rounded-lg object-cover	" src="/storage/hotel.png"
+                                    alt="">
 
                                 {{-- <span class="w-10 h-10 me-4 rounded-full bg-figma-btn-blue text-center">S</span> --}}
                                 <div class="font-medium dark:text-white">
@@ -473,8 +474,8 @@
                         </article>
                         <article>
                             <div class="flex mb-4">
-                                <img class="w-24 h-24 me-4 rounded-lg object-cover	"
-                                    src="/storage/hotel.png" alt="">
+                                <img class="w-24 h-24 me-4 rounded-lg object-cover	" src="/storage/hotel.png"
+                                    alt="">
 
                                 {{-- <span class="w-10 h-10 me-4 rounded-full bg-figma-btn-blue text-center">S</span> --}}
                                 <div class="font-medium dark:text-white">
@@ -533,8 +534,8 @@
                         </article>
                         <article>
                             <div class="flex mb-4">
-                                <img class="w-24 h-24 me-4 rounded-lg object-cover	"
-                                    src="/storage/hotel.png" alt="">
+                                <img class="w-24 h-24 me-4 rounded-lg object-cover	" src="/storage/hotel.png"
+                                    alt="">
 
                                 {{-- <span class="w-10 h-10 me-4 rounded-full bg-figma-btn-blue text-center">S</span> --}}
                                 <div class="font-medium dark:text-white">
@@ -593,8 +594,8 @@
                         </article>
                         <article>
                             <div class="flex mb-4">
-                                <img class="w-24 h-24 me-4 rounded-lg object-cover	"
-                                    src="/storage/hotel.png" alt="">
+                                <img class="w-24 h-24 me-4 rounded-lg object-cover	" src="/storage/hotel.png"
+                                    alt="">
 
                                 {{-- <span class="w-10 h-10 me-4 rounded-full bg-figma-btn-blue text-center">S</span> --}}
                                 <div class="font-medium dark:text-white">
@@ -685,7 +686,8 @@
                         <h1 class="font-bold text-center text-lg mb-5">Start creating your wishlist<br> destination
                         </h1>
                         <p class="text-center mb-5">Start creating your wishlist<br> destination</p>
-                        <button class="bg-figma-btn-blue text-white rounded p-2 px-6 mt-5">Save to Wishlist Now <i
+                        <button data-modal-target="date-wishlist" data-modal-toggle="date-wishlist"
+                            class="bg-figma-btn-blue text-white rounded p-2 px-6 mt-5">Save to Wishlist Now <i
                                 class="ml-2 fa fa-arrow-right"></i></button>
                     </div>
 
@@ -695,27 +697,54 @@
             </div>
         </div>
     </div>
-    {{-- <div class="container h-full">
-        <div class="lg:order-first">
-            <div class="grid grid-cols-1 gap-8">
-                <div class="max-w-md p-8">
-                    <div class="relative" style="padding-bottom: 100px">
-                        <img src="{{ asset('storage/vec1.png') }}" alt="Foto"
-                            class="absolute left-72 top-28 ml-24 -mb-8">
-                        <!-- Video -->
-                        <img src="{{ asset('storage/vidprev.png') }}" alt="Foto"
-                            class="absolute left-0 top-0 rounded-xl">
-                        <!-- Foto -->
-                        <!-- Foto -->
-                        <img src="{{ asset('storage/dot.png') }}" alt="Foto"
-                            class="absolute left-0 top-72  -mb-8 ">
-                        <img src="{{ asset('storage/caro1.png') }}" alt="Foto"
-                            class="absolute left-48 top-52 w-80 h-48   -mb-8 ">
-                    </div>
+
+
+
+    <div id="date-wishlist" tabindex="-1" aria-hidden="true"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-2xl max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <!-- Modal header -->
+                <div class="flex items-center justify-between p-4 md:p-5 rounded-t dark:border-gray-600">
+                    <h3 class="text-xl font-bold dark:text-white">
+                        Wishlist
+                    </h3>
+                    <button type="button"
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        data-modal-hide="date-wishlist">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
                 </div>
+                <!-- Modal body -->
+                <div class="p-2 md:p-5">
+                    <label for="date-pick">Date</label>
+
+                    <div class="relative max-w-sm mt-2">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                            </svg>
+                        </div>
+                        <input datepicker datepicker-buttons datepicker-autoselect-today type="text"
+                            name="date-pick"
+                            class="border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Select date">
+                    </div>
+                    <button type="submit" class="bg-figma-btn-blue text-white rounded p-2 px-6 mt-5">Save  <i class="ml-2 fa fa-arrow-right"></i></button>
+
+                </div>
+                <!-- Modal footer -->
             </div>
         </div>
-    </div>   --}}
+    </div>
 
     @include('package.penunjang.footer')
 

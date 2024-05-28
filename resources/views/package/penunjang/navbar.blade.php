@@ -70,15 +70,18 @@
     <div class="container flex items-center justify-between mx-auto">
         <div class="flex items-center justify-center space-x-3 rtl:space-x-reverse">
             <a href="/" class="flex items-center">
-                <img src="/storage/logo_localdest.png" alt="" srcset="" class="logo-white">
+                {{-- <img src="/storage/logo_localdest.png" alt="" srcset="" class="logo-white">
                 <img src="/storage/logo_localdest-light.png" alt="" srcset="" class="logo-light"
-                    style="display: none">
+                    style="display: none"> --}}
 
+                    <img src="/storage/vector/logo-localdest.png" alt="" srcset="" class="logo-white w-20 h-14 object-cover ">
+                    <img src="/storage/vector/logo-localdest-white.png" alt="" srcset="" class="logo-light w-20 h-14 object-cover"
+                        style="display: none">
                 {{-- <span
                     class="text-white font-semibold whitespace-nowrap lg:text-2xl dark:text-white">LocalDest.id</span> --}}
             </a>
             <div class="flex items-center justify-center text-white  md:order-1" id="navbar-user">
-                <ul class="flex ml-5 space-x-4 md:space-x-8 p-0 m-0 list-none">
+                <ul class="flex ml-2 space-x-4 md:space-x-8 p-0 m-0 list-none">
                     <li>
                         <a href="/destination" class="nav-link destination">
                             DESTINATION
