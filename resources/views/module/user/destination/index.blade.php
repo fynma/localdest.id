@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 @include('package.headerpack')
-<title>gils</title>
-<style>
+<title>Localdest - Destination</title>
+<link rel="icon" type="image/png" href="/storage/vector/logo-localdest.jpg"><style>
     /* .splide__slide img {
         width: 100%;
         height: auto;
@@ -10,10 +10,14 @@
     .splide__pagination {
         display: none
     }
+    .splide__arrow {
+        display: none
+    }
 </style>
 <script>
-        //    mode = 'light' // set 'light' untuk perubahan warna dasar navbar
+    //    mode = 'light' // set 'light' untuk perubahan warna dasar navbar
 </script>
+
 <body>
     @include('package.penunjang.navbar')
 
@@ -129,6 +133,29 @@
                         </div>
                         <!-- Add more div elements for additional photos -->
                     </div>
+                    <div class="flex justify-end items-center mt-2 gap-5">
+                        <div class="panah flex gap-5">
+                            <button class="splide-prev"><svg xmlns="http://www.w3.org/2000/svg" width="1.78em"
+                                    height="1em" viewBox="0 0 16 9">
+                                    <path fill="currentColor"
+                                        d="M12.5 5h-9c-.28 0-.5-.22-.5-.5s.22-.5.5-.5h9c.28 0 .5.22.5.5s-.22.5-.5.5" />
+                                    <path fill="currentColor"
+                                        d="M6 8.5a.47.47 0 0 1-.35-.15l-3.5-3.5c-.2-.2-.2-.51 0-.71L5.65.65c.2-.2.51-.2.71 0s.2.51 0 .71L3.21 4.51l3.15 3.15c.2.2.2.51 0 .71c-.1.1-.23.15-.35.15Z" />
+                                </svg></button>
+                            <button class="splide-next"><svg xmlns="http://www.w3.org/2000/svg" width="1.78em"
+                                    height="1em" viewBox="0 0 16 9">
+                                    <path fill="currentColor"
+                                        d="M12.5 5h-9c-.28 0-.5-.22-.5-.5s.22-.5.5-.5h9c.28 0 .5.22.5.5s-.22.5-.5.5" />
+                                    <path fill="currentColor"
+                                        d="M10 8.5a.47.47 0 0 1-.35-.15c-.2-.2-.2-.51 0-.71l3.15-3.15l-3.15-3.15c-.2-.2-.2-.51 0-.71s.51-.2.71 0l3.5 3.5c.2.2.2.51 0 .71l-3.5 3.5c-.1.1-.23.15-.35.15Z" />
+                                </svg></button>
+                        </div>
+                        <div class="garis w-2/4">
+                            <div class="h-1 bg-gray-300 relative">
+                                <div class="progress-bar-fill h-full bg-blue-500"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -155,7 +182,7 @@
                     <strong class="font-semibold"> In mauris donec feugiat sit ac sit fermentum turpis odio.</strong>
                 </p>
             </div>
-            <div class="flex justify-between">
+            <div class="flex justify-between mt-10">
                 <div id="filter" class="w-56 p-3 dark:bg-gray-700 mt-5 border-r border-gray-200">
                     <h6 class="mb-3 text-xl font-bold text-gray-900 dark:text-white">
                         Filter
@@ -306,22 +333,30 @@
                                     <div class="relative w-full">
                                         <div class="input-container mb-5">
                                             <form class="max-w-md mx-auto">
-                                                <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                                                <label for="default-search"
+                                                    class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                                                 <div class="relative">
-                                                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                                                    <div
+                                                        class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                            fill="none" viewBox="0 0 20 20">
+                                                            <path stroke="currentColor" stroke-linecap="round"
+                                                                stroke-linejoin="round" stroke-width="2"
+                                                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                                                         </svg>
                                                     </div>
-                                                    <input type="search" id="default-search" class="block w-full pl-10 pr-4 py-2 text-sm text-gray-900 bg-white border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" placeholder="Search Destination..." required />
+                                                    <input type="search" id="default-search"
+                                                        class="block w-full pl-10 pr-4 py-2 text-sm text-gray-900 bg-white border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
+                                                        placeholder="Search Destination..." required />
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
                                 </form>
-                                  
+
                             </div>
-                            <div class="listing-wisata-pagination">
+                            <div class="listing-wisata-pagination mt-10">
                                 <div class="listing-wisata-1 mb-5">
                                     <div class="flex gap-x-4">
                                         <div class="relative">
@@ -491,10 +526,7 @@
                     </form>
                 </div>
             </div>
-            <h1>hai sayang</h1>
-
         </div>
-    </div>
     </div>
     {{-- <div class="container h-full">
         <div class="lg:order-first">
@@ -520,20 +552,46 @@
 
     @include('package.penunjang.footer')
 
-  
+
 
 
     @include('package.footerpack')
     <script>
-        var firstslider = new Splide('#fslider', {
-            type: 'loop',
-            drag: 'free',
-            perPage: 5,
-            autoScroll: {
-                speed: 1,
-            },
-        });
+        $(document).ready(function() {
+            var splide = new Splide('#fslider', {
+                type: 'slide',
+                perPage: 5,
+                gap: '1rem',
+                pagination: false,
+                breakpoints: {
+                    768: {
+                        perPage: 1
+                    }
+                }
+            }).mount();
 
+            function updateProgressBar() {
+                var currentSlide = splide.index;
+                var totalSlides = Math.max(splide.length - splide.options.perPage + 1,
+                    1); // Ensure totalSlides is never less than 1
+                var progressPercentage = (currentSlide + 1) / totalSlides * 100;
+                $('.progress-bar-fill').css('width', progressPercentage + '%');
+            }
+
+            updateProgressBar();
+
+            splide.on('move', function() {
+                updateProgressBar();
+            });
+
+            $('.splide-prev').on('click', function() {
+                splide.go('<');
+            });
+
+            $('.splide-next').on('click', function() {
+                splide.go('>');
+            });
+        });
         $(document).ready(function() {
             a();
         });
