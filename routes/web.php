@@ -15,3 +15,9 @@ Route::get('/detail-destination', function () {
 Route::get('/contact-us', function (){
     return view('module.user.contactus.index');
 });
+Route::get('/news', function (){
+    return view('module.user.news.index');
+});
+Route::get('/open-news', function (){
+    return view('module.user.news.detail-news');
+});
