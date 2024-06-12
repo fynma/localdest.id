@@ -28,17 +28,13 @@
     .splide__arrow {
         display: none;
     }
-
-    .transition {
-        transition: all 0.5s ease;
-    }
 </style>
 
 <body>
     @include('package.penunjang.navbar')
     <section id="hero-section" class="relative">
         <video id="video" class="w-screen h-screen object-cover video-first" autoplay muted loop>
-            <source src="{{ asset('storage/video-contoh.mp4') }}" type="video/mp4">
+            <source src="{{ asset('storage/video-contoh2.mp4') }}" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <div class="absolute inset-0 bg-black top-0 bg-opacity-40 flex flex-col justify-between  p-4">
@@ -181,12 +177,13 @@
                     <strong class="font-semibold"> In mauris donec feugiat sit ac sit fermentum turpis odio.</strong>
                 </p>
             </div>
-            <div id="fslider" class="mt-10 h-96" style="align-items: flex-end;">
-                <div class="splide__track max-h-96 overflow-hidden">
-                    <div class="splide__list flex gap-x-4" style="align-items: flex-end;" >
-                        <div class="splide__slide relative " >
+            {{-- original --}}
+            {{-- <div id="fslider" class="mt-10 ">
+                <div class="splide__track h-full">
+                    <div class="splide__list flex gap-x-4 ">
+                        <div class="splide__slide ">
                             <div
-                                class="photo-container h-80 w-72 relative cursor-pointer hover:h-96 transition-height duration-300 ease-in-out">
+                                class="photo-container h-80 w-72 relative cursor-pointer transition ease-in-out delay-150 hover:-translate-y-2 duration-300 ">
                                 <div class="absolute inset-0 bg-black bg-opacity-50  rounded-xl"></div>
                                 <img src="storage/wisata/bromo.png" alt="Photo 1"
                                     class="w-auto h-full object-cover rounded-xl">
@@ -202,7 +199,7 @@
 
                         <div class="splide__slide relative">
                             <div
-                                class="photo-container h-80 w-72 relative cursor-pointer hover:h-96 transition-height duration-300 ease-in-out">
+                                class="photo-container h-80 w-72 relative cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 ">
                                 <div class="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
                                 <img src="storage/wisata/airterjun.png" alt="Photo 2"
                                     class="w-full h-full object-cover rounded-xl">
@@ -217,7 +214,7 @@
                         </div>
                         <div class="splide__slide relative">
                             <div
-                                class="photo-container h-80 w-72 relative cursor-pointer hover:h-96 transition-height duration-300 ease-in-out">
+                                class="photo-container h-80 w-72 relative cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 ">
                                 <div class="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
                                 <img src="storage/wisata/pantai.png" alt="Photo 3"
                                     class="w-full h-full object-cover rounded-xl">
@@ -232,7 +229,7 @@
                         </div>
                         <div class="splide__slide relative">
                             <div
-                                class="photo-container h-80 w-72 relative cursor-pointer hover:h-96 transition-height duration-300 ease-in-out">
+                                class="photo-container h-80 w-72 relative cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 ">
                                 <div class="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
                                 <img src="storage/wisata/danau.png" alt="Photo 3"
                                     class="w-full h-full object-cover rounded-xl">
@@ -247,7 +244,7 @@
                         </div>
                         <div class="splide__slide relative">
                             <div
-                                class="photo-container h-80 w-72 relative cursor-pointer hover:h-96 transition-height duration-300 ease-in-out">
+                                class="photo-container h-80 w-72 relative cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 ">
                                 <div class="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
                                 <img src="storage/wisata/danau.png" alt="Photo 3"
                                     class="w-auto h-full object-cover rounded-xl">
@@ -261,6 +258,111 @@
                             </div>
                         </div>
                         <!-- Add more div elements for additional photos -->
+                    </div>
+                </div>
+                <div class="flex justify-end items-center mt-2 gap-5">
+                    <div class="panah flex gap-5">
+                        <button class="splide-prev"><svg xmlns="http://www.w3.org/2000/svg" width="1.78em"
+                                height="1em" viewBox="0 0 16 9">
+                                <path fill="currentColor"
+                                    d="M12.5 5h-9c-.28 0-.5-.22-.5-.5s.22-.5.5-.5h9c.28 0 .5.22.5.5s-.22.5-.5.5" />
+                                <path fill="currentColor"
+                                    d="M6 8.5a.47.47 0 0 1-.35-.15l-3.5-3.5c-.2-.2-.2-.51 0-.71L5.65.65c.2-.2.51-.2.71 0s.2.51 0 .71L3.21 4.51l3.15 3.15c.2.2.2.51 0 .71c-.1.1-.23.15-.35.15Z" />
+                            </svg></button>
+                        <button class="splide-next"><svg xmlns="http://www.w3.org/2000/svg" width="1.78em"
+                                height="1em" viewBox="0 0 16 9">
+                                <path fill="currentColor"
+                                    d="M12.5 5h-9c-.28 0-.5-.22-.5-.5s.22-.5.5-.5h9c.28 0 .5.22.5.5s-.22.5-.5.5" />
+                                <path fill="currentColor"
+                                    d="M10 8.5a.47.47 0 0 1-.35-.15c-.2-.2-.2-.51 0-.71l3.15-3.15l-3.15-3.15c-.2-.2-.2-.51 0-.71s.51-.2.71 0l3.5 3.5c.2.2.2.51 0 .71l-3.5 3.5c-.1.1-.23.15-.35.15Z" />
+                            </svg></button>
+                    </div>
+                    <div class="garis w-2/4">
+                        <div class="h-1 bg-gray-300 relative">
+                            <div class="progress-bar-fill h-full bg-blue-500"></div>
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
+            <div id="fslider" style="mb-10">
+                <div class="splide__track h-96">
+                    <div class="splide__list flex gap-x-4" style="align-items:flex-end">
+                        <div class="splide__slide">
+                            <div
+                                class="photo-container h-80 w-72 relative cursor-pointer transition ease-in-out delay-150 hover:-translate-y-4 duration-200 ">
+                                <div class="absolute inset-0 bg-black bg-opacity-50  rounded-xl"></div>
+                                <img src="storage/wisata/bromo.png" alt="Photo 1"
+                                    class="w-auto h-full object-cover rounded-xl">
+                                <div class="absolute bottom-0 left-0 right-0  text-white p-4">
+                                    <p class="text-sm font-bold">Kawah Bromo</p>
+                                    <p class="description">Lorem ipsum dolor sit amet consectetur. Egest <span
+                                            class="more" style="display: none;"> nisi orci urna cursus sed mala
+                                            sit.</span></p>
+                                    <button class="see-more text-white font-bold">See More</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="splide__slide relative">
+                            <div
+                                class="photo-container h-80 w-72 relative cursor-pointer transition ease-in-out delay-150 hover:-translate-y-4 duration-200">
+                                <div class="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
+                                <img src="storage/wisata/airterjun.png" alt="Photo 2"
+                                    class="w-full h-full object-cover rounded-xl">
+                                <div class="absolute bottom-0 left-0 right-0 text-white p-4">
+                                    <p class="text-sm font-bold">Air Terjun</p>
+                                    <p class="description">Lorem ipsum dolor sit amet consectetur. Egest <span
+                                            class="more" style="display: none;"> nisi orci urna cursus sed mala
+                                            sit.</span></p>
+                                    <button class="see-more text-white font-bold">See More</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="splide__slide relative">
+                            <div
+                                class="photo-container h-80 w-72 relative cursor-pointer transition ease-in-out delay-150 hover:-translate-y-4 duration-200">
+                                <div class="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
+                                <img src="storage/wisata/pantai.png" alt="Photo 3"
+                                    class="w-full h-full object-cover rounded-xl">
+                                <div class="absolute bottom-0 left-0 right-0 text-white p-4">
+                                    <p class="text-sm font-bold">Pantai Pasir Putih</p>
+                                    <p class="description">Lorem ipsum dolor sit amet consectetur. Egest <span
+                                            class="more" style="display: none;"> nisi orci urna cursus sed mala
+                                            sit.</span></p>
+                                    <button class="see-more text-white font-bold">See More</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="splide__slide relative">
+                            <div
+                                class="photo-container h-80 w-72 relative cursor-pointer transition ease-in-out delay-150 hover:-translate-y-4 duration-200">
+                                <div class="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
+                                <img src="storage/wisata/danau.png" alt="Photo 3"
+                                    class="w-full h-full object-cover rounded-xl">
+                                <div class="absolute bottom-0 left-0 right-0 text-white p-4">
+                                    <p class="text-sm font-bold">Danau Putri</p>
+                                    <p class="description">Lorem ipsum dolor sit amet consectetur. Egest <span
+                                            class="more" style="display: none;"> nisi orci urna cursus sed mala
+                                            sit.</span></p>
+                                    <button class="see-more text-white font-bold">See More</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="splide__slide relative">
+                            <div
+                                class="photo-container h-80 w-72 relative cursor-pointer transition ease-in-out delay-150 hover:-translate-y-4 duration-200">
+                                <div class="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
+                                <img src="storage/wisata/danau.png" alt="Photo 3"
+                                    class="w-auto h-full object-cover rounded-xl">
+                                <div class="absolute bottom-0 left-0 right-0 text-white p-4">
+                                    <p class="text-sm font-bold">Danau Putri</p>
+                                    <p class="description">Lorem ipsum dolor sit amet consectetur. Egest <span
+                                            class="more" style="display: none;"> nisi orci urna cursus sed mala
+                                            sit.</span></p>
+                                    <button class="see-more text-white font-bold">See More</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="flex justify-end items-center mt-2 gap-5">
@@ -562,7 +664,7 @@
                 gap: '1rem',
                 pagination: false,
                 breakpoints: {
-                    768: {
+                    1024: {
                         perPage: 1
                     }
                 }

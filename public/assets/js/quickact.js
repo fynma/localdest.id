@@ -21,7 +21,69 @@ var quick = {
 
         return day + ' ' + month + ' ' + year;
     },
+    convertDateEng: function (data) {
+        var date = new Date(data);
 
+        var monthNames = [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+    
+
+        var day = date.getDate().toString().padStart(2, '0');
+        var month = monthNames[date.getMonth()];
+        var year = date.getFullYear();
+
+        return day + ' ' + month + ' ' + year;
+    },
+    convertDateTime: function (data) {
+        var date = new Date(data);
+    
+        var monthNames = [
+            "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+            "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+        ];
+    
+        var day = date.getDate().toString().padStart(2, '0');
+        var month = monthNames[date.getMonth()];
+        var year = date.getFullYear();
+    
+        var hours = date.getHours().toString().padStart(2, '0');
+        var minutes = date.getMinutes().toString().padStart(2, '0');
+    
+        return day + ' ' + month + ' ' + year + ' ' +  hours + ':' + minutes;
+    },
+    convertDateTimeEng: function (data) {
+        var date = new Date(data);
+    
+        var monthNames = [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+    
+        var day = date.getDate().toString().padStart(2, '0');
+        var month = monthNames[date.getMonth()];
+        var year = date.getFullYear();
+    
+        var hours = date.getHours();
+        var minutes = date.getMinutes().toString().padStart(2, '0');
+        var ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        hours = hours.toString().padStart(2, '0');
+    
+        return day + ' ' + month + ' ' + year + ' ' +  hours + ':' + minutes + ' ' + ampm;
+    },
+    
+     convertHourMinutes: function (data) {
+        var date = new Date(data);
+    
+        var hours = date.getHours().toString().padStart(2, '0');
+        var minutes = date.getMinutes().toString().padStart(2, '0');
+    
+        return hours + ':' + minutes;
+    },
+    
     leafletMapSelector: function (id, a , b) {
         var map = L.map(id).setView([-2.5489, 118.0149], 5); 
     
@@ -38,7 +100,9 @@ var quick = {
             markers = []; 
     
             var marker = L.marker(e.latlng).addTo(map); 
-            marker.bindPopup('Latitude: ' + e.latlng.lat + '<br>Longitude: ' + e.latlng.lng).openPopup();
+            // marker.bindPopup('Latitude: ' + e.latlng.lat + '<br>Longitude: ' + e.latlng.lng).openPopup();
+            marker.bindPopup('Location tagged').openPopup();
+
             markers.push(marker); 
             var latitude = e.latlng.lat
             var longitude = e.latlng.lng

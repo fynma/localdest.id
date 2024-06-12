@@ -169,7 +169,7 @@
                     <p class="text-white text-lg font-thin">Let's add your destination ideas for us here</p>
                 </div>
                 @auth
-                    <button class="text-blue-600 bg-white px-4 py-2 rounded-full me-5">Request Destination</button>
+                    <button onclick="window.location='/request-destination'" class="text-blue-600 bg-white px-4 py-2 rounded-full me-5">Request Destination</button>
                 @else
                     <button data-popover-target="login-alert-popover" type="disabled" 
                         class="text-blue-600 bg-white px-4 py-2 rounded-full me-5">Request Destination</button>
@@ -376,170 +376,56 @@
                                     </form>
 
                                 </div>
-                                <div class="listing-wisata-pagination mt-10">
-                                    <div class="listing-wisata-1 mb-5">
-                                        <div class="flex gap-x-4">
-                                            <div class="relative">
-                                                <div class="photo-container h-80 w-72 relative cursor-pointer">
-                                                    <div class="absolute inset-0 bg-black bg-opacity-50  rounded-xl"></div>
-                                                    <img src="storage/wisata/bromo.png" alt="Photo 1"
-                                                        class="w-auto h-full object-cover rounded-xl">
-                                                    <div class="absolute bottom-0 left-0 right-0  text-white p-4">
-                                                        <p class="text-sm font-bold">Kawah Bromo</p>
-                                                        <p class="description">Lorem ipsum dolor sit amet consectetur.
-                                                            Egest <span class="more" style="display: none;"> nisi orci
-                                                                urna cursus sed mala
-                                                                sit.</span></p>
-                                                        <button class="see-more text-white font-bold">See More</button>
-                                                    </div>
-                                                </div>
+                                <div class="listing-wisata-pagination mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                                    {{-- <div class="relative">
+                                        <div class="photo-container h-80 w-full relative cursor-pointer">
+                                            <div class="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
+                                            <img src="storage/wisata/bromo.png" alt="Photo 1" class="w-full h-full object-cover rounded-xl">
+                                            <div class="absolute bottom-0 left-0 right-0 text-white p-4">
+                                                <p class="text-sm font-bold">Kawah Bromo</p>
+                                                <p class="description">Lorem ipsum dolor sit amet consectetur. Egest <span class="more" style="display: none;"> nisi orci urna cursus sed mala sit.</span></p>
+                                                <button class="see-more text-white font-bold">See More</button>
                                             </div>
-
-                                            <div class="relative">
-                                                <div class="photo-container h-80 w-72 relative cursor-pointer">
-                                                    <div class="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
-                                                    <img src="storage/wisata/airterjun.png" alt="Photo 2"
-                                                        class="w-full h-full object-cover rounded-xl">
-                                                    <div class="absolute bottom-0 left-0 right-0 text-white p-4">
-                                                        <p class="text-sm font-bold">Air Terjun</p>
-                                                        <p class="description">Lorem ipsum dolor sit amet consectetur.
-                                                            Egest <span class="more" style="display: none;"> nisi orci
-                                                                urna cursus sed mala
-                                                                sit.</span></p>
-                                                        <button class="see-more text-white font-bold">See More</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="relative">
-                                                <div class="photo-container h-80 w-72 relative cursor-pointer">
-                                                    <div class="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
-                                                    <img src="storage/wisata/pantai.png" alt="Photo 3"
-                                                        class="w-full h-full object-cover rounded-xl">
-                                                    <div class="absolute bottom-0 left-0 right-0 text-white p-4">
-                                                        <p class="text-sm font-bold">Pantai Pasir Putih</p>
-                                                        <p class="description">Lorem ipsum dolor sit amet consectetur.
-                                                            Egest <span class="more" style="display: none;"> nisi orci
-                                                                urna cursus sed mala
-                                                                sit.</span></p>
-                                                        <button class="see-more text-white font-bold">See More</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="relative">
-                                                <div class="photo-container h-80 w-72 relative cursor-pointer">
-                                                    <div class="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
-                                                    <img src="storage/wisata/danau.png" alt="Photo 3"
-                                                        class="w-full h-full object-cover rounded-xl">
-                                                    <div class="absolute bottom-0 left-0 right-0 text-white p-4">
-                                                        <p class="text-sm font-bold">Danau Putri</p>
-                                                        <p class="description">Lorem ipsum dolor sit amet consectetur.
-                                                            Egest <span class="more" style="display: none;"> nisi orci
-                                                                urna cursus sed mala
-                                                                sit.</span></p>
-                                                        <button class="see-more text-white font-bold">See More</button>
-                                                    </div>
-                                                </div>
+                                        </div>
+                                    </div> --}}
+                                    {{-- <div class="relative">
+                                        <div class="photo-container h-80 w-full relative cursor-pointer">
+                                            <div class="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
+                                            <img src="storage/wisata/airterjun.png" alt="Photo 2" class="w-full h-full object-cover rounded-xl">
+                                            <div class="absolute bottom-0 left-0 right-0 text-white p-4">
+                                                <p class="text-sm font-bold">Air Terjun</p>
+                                                <p class="description">Lorem ipsum dolor sit amet consectetur. Egest <span class="more" style="display: none;"> nisi orci urna cursus sed mala sit.</span></p>
+                                                <button class="see-more text-white font-bold">See More</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="listing-wisata-2 mb-5">
-                                        <div class="flex gap-x-4">
-                                            <div class="relative">
-                                                <div class="photo-container h-80 w-72 relative cursor-pointer">
-                                                    <div class="absolute inset-0 bg-black bg-opacity-50  rounded-xl"></div>
-                                                    <img src="storage/wisata/bromo.png" alt="Photo 1"
-                                                        class="w-auto h-full object-cover rounded-xl">
-                                                    <div class="absolute bottom-0 left-0 right-0  text-white p-4">
-                                                        <p class="text-sm font-bold">Kawah Bromo</p>
-                                                        <p class="description">Lorem ipsum dolor sit amet consectetur.
-                                                            Egest <span class="more" style="display: none;"> nisi orci
-                                                                urna cursus sed mala
-                                                                sit.</span></p>
-                                                        <button class="see-more text-white font-bold">See More</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="relative">
-                                                <div class="photo-container h-80 w-72 relative cursor-pointer">
-                                                    <div class="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
-                                                    <img src="storage/wisata/airterjun.png" alt="Photo 2"
-                                                        class="w-full h-full object-cover rounded-xl">
-                                                    <div class="absolute bottom-0 left-0 right-0 text-white p-4">
-                                                        <p class="text-sm font-bold">Air Terjun</p>
-                                                        <p class="description">Lorem ipsum dolor sit amet consectetur.
-                                                            Egest <span class="more" style="display: none;"> nisi orci
-                                                                urna cursus sed mala
-                                                                sit.</span></p>
-                                                        <button class="see-more text-white font-bold">See More</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="relative">
-                                                <div class="photo-container h-80 w-72 relative cursor-pointer">
-                                                    <div class="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
-                                                    <img src="storage/wisata/pantai.png" alt="Photo 3"
-                                                        class="w-full h-full object-cover rounded-xl">
-                                                    <div class="absolute bottom-0 left-0 right-0 text-white p-4">
-                                                        <p class="text-sm font-bold">Pantai Pasir Putih</p>
-                                                        <p class="description">Lorem ipsum dolor sit amet consectetur.
-                                                            Egest <span class="more" style="display: none;"> nisi orci
-                                                                urna cursus sed mala
-                                                                sit.<button>detail</button></span></p>
-                                                        <button class="see-more text-white font-bold">See More</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="relative">
-                                                <div class="photo-container h-80 w-72 relative cursor-pointer">
-                                                    <div class="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
-                                                    <img src="storage/wisata/danau.png" alt="Photo 3"
-                                                        class="w-full h-full object-cover rounded-xl">
-                                                    <div class="absolute bottom-0 left-0 right-0 text-white p-4">
-                                                        <p class="text-sm font-bold">Danau Putri</p>
-                                                        <p class="description">Lorem ipsum dolor sit amet consectetur.
-                                                            Egest <span class="more" style="display: none;"> nisi orci
-                                                                urna cursus sed mala
-                                                                sit.</span></p>
-                                                        <button class="see-more text-white font-bold">See More</button>
-                                                    </div>
-                                                </div>
+                                    <div class="relative">
+                                        <div class="photo-container h-80 w-full relative cursor-pointer">
+                                            <div class="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
+                                            <img src="storage/wisata/pantai.png" alt="Photo 3" class="w-full h-full object-cover rounded-xl">
+                                            <div class="absolute bottom-0 left-0 right-0 text-white p-4">
+                                                <p class="text-sm font-bold">Pantai Pasir Putih</p>
+                                                <p class="description">Lorem ipsum dolor sit amet consectetur. Egest <span class="more" style="display: none;"> nisi orci urna cursus sed mala sit.</span></p>
+                                                <button class="see-more text-white font-bold">See More</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <nav aria-label="Page navigation example mb-5">
-                                        <ul class="flex -space-x-px text-base h-10 justify-center">
-                                            <li>
-                                                <a href="#"
-                                                    class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"
-                                                    class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"
-                                                    class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" aria-current="page"
-                                                    class="flex items-center justify-center px-4 h-10 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"
-                                                    class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"
-                                                    class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"
-                                                    class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
-                                            </li>
-                                        </ul>
-                                    </nav>
-
+                                    <div class="relative">
+                                        <div class="photo-container h-80 w-full relative cursor-pointer">
+                                            <div class="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
+                                            <img src="storage/wisata/danau.png" alt="Photo 4" class="w-full h-full object-cover rounded-xl">
+                                            <div class="absolute bottom-0 left-0 right-0 text-white p-4">
+                                                <p class="text-sm font-bold">Danau Putri</p>
+                                                <p class="description">Lorem ipsum dolor sit amet consectetur. Egest <span class="more" style="display: none;"> nisi orci urna cursus sed mala sit.</span></p>
+                                                <button class="see-more text-white font-bold">See More</button>
+                                            </div>
+                                        </div>
+                                    </div> --}}
+                                    <!-- Tambahkan lebih banyak item jika diperlukan -->
+                                </div>
+                                <div class="navigation-pagin flex justify-center mt-10">
+                                    <ul class="impl-pagin inline-flex -space-x-px text-sm">
+                                    </ul>
                                 </div>
                             </div>
 
@@ -617,7 +503,7 @@
             });
 
             a = async () => {
-                firstslider.mount();
+                // firstslider.mount();
                 $('.splide__arrows').hide()
             }
 
@@ -641,6 +527,8 @@
                 }
             });
         </script>
+            @include('module.user.destination.script')
+
     </body>
 
     </html>
