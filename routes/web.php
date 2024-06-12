@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Middleware\loginCheck;
 
 Route::controller(RegisterController::class)->group(function () {
@@ -42,4 +43,17 @@ Route::get('/destination', function () {
 
 //route untuk controller maupun view yg restricted/ auth required di place d bawah situ ye
 Route::middleware([loginCheck::class])->group(function () {
+    Route::get('/request-destination', function () {
+        return view('module.user.request-destination.index');
+    });
+    Route::controller(DestinationController::class)->group(function () {
+        foreach (['create'] as $key => $value) {
+            Route::post('/dest/' . $value, $value);
+        }
+    });
+    Route::controller(ReviewController::class)->group(function () {
+        foreach (['index', 'create'] as $key => $value) {
+            Route::post('/review/' . $value, $value);
+        }
+    });
 });

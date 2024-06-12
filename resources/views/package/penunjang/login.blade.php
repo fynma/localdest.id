@@ -84,9 +84,9 @@
                     quick.toastNotif({
                         title: response.data.message,
                         icon: 'success',
-                        timer: 1500,
+                        timer: 1000,
                         callback: function() {
-                            window.location.href = `/`;
+                            window.location.reload();
                         }
                     });
                 } else {
