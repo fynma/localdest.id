@@ -34,7 +34,7 @@
     @include('package.penunjang.navbar')
     <section id="hero-section" class="relative">
         <video id="video" class="w-screen h-screen object-cover video-first" autoplay muted loop>
-            <source src="{{ asset('storage/video-contoh2.mp4') }}" type="video/mp4">
+            <source src="{{ asset('storage/video-contoh.mp4') }}" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <div class="absolute inset-0 bg-black top-0 bg-opacity-40 flex flex-col justify-between  p-4">
