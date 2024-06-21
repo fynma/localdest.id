@@ -1,12 +1,35 @@
 <script>
+    APP_URL = "{{ getenv('APP_URL') }}/";
+
     $(document).ready(function() {
         quick.leafletMapSelector('maps-selector', '#inp-latitude', '#inp-longitude')
 
+        quick.getProvince('province');
+        $('.selection').addClass(
+            'bg-white border border-gray-200 text-gray-900 text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
+        );
+
+        //     changeClass: function() {
+        //     console.log('ganti')
+        init()
+        // },
     });
+    init = async () => {
+        await quick.getProvince('province')
+
+        await loadTag()
+    }
 
     let fileCount = 0;
     let selectedFiles = [];
-
+    $('#addTag').on('click', function() {
+        var newTag = $('#newTag').val();
+        if (newTag) {
+            var newOption = new Option(newTag, newTag, true, true);
+            $('#tag').append(newOption).trigger('change');
+            $('#newTag').val('');
+        }
+    });
     $('#fileattch').change(function(event) {
         const files = event.target.files;
         for (let i = 0; i < files.length; i++) {
@@ -111,9 +134,6 @@
         $('#fileattch').click();
 
     }
-
-
-
     $('#dropzone-file').on('change', function(e) {
         var file = e.target.files[0];
         var reader = new FileReader();
@@ -176,7 +196,8 @@
             .catch(error => {
                 button.prop('disabled', false);
 
-                console.error('There has been a problem with your Axios operation:', error.response.data.message);
+                console.error('There has been a problem with your Axios operation:', error.response.data
+                    .message);
                 quick.toastNotif({
                     title: error.response.data.message,
                     icon: 'error',
@@ -186,5 +207,31 @@
                     // }
                 });
             });
+    }
+
+    function loadTag() {
+        axios.post(APP_URL + 'api/destination/getTag', {
+                _token: '{{ csrf_token() }}',
+            })
+            .then(function(response) {
+                console.log(response)
+                var data = response.data
+                let tags = data.map(tagsdata => {
+                    return {
+                        id: tagsdata.tag,
+                        text: tagsdata.tag
+                    };
+                });
+                $('#tag').select2({
+                    placeholder: 'Select tags',
+                    tags: true,
+                    data: tags
+
+                });
+            })
+            .catch(function(error) {
+                console.error('Ada masalah dalam mengambil data:', error);
+            });
+
     }
 </script>

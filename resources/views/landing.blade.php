@@ -28,6 +28,9 @@
     .splide__arrow {
         display: none;
     }
+    .transition {
+        transition: all 0.3s;
+    }
 </style>
 
 <body>

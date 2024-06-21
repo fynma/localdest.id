@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Destination;
 use App\Models\DestinationPhoto;
 use App\Models\Notification;
+use App\Models\Tags;
+use App\Models\TagsDest;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
@@ -26,8 +28,20 @@ class DestinationController extends Controller
     $data['photos'] = DB::table('destinations_image')->where('image_destination_id', $id)->get();
     return response()->json($data);
   }
+  public function getTag(Request $request)
+  {
+    $data = DB::table('tags')->select(['tag_id', 'tag'])->get();
+    return response()->json($data);
+  }
+  public function getTagDest(Request $request)
+  {
+    $id = $request->post('id');
+    $data = DB::table('v_tagofdest')->where('tags_destinations_id', $id)->get();
+    return response()->json($data);
+  }
   public function create(Request $request)
   {
+    // dd($request->all());
     DB::beginTransaction();
     try {
 
@@ -75,6 +89,24 @@ class DestinationController extends Controller
         'destination_user_id' => $userId,
       ];
       Destination::create($destData);
+      if (isset($data['tag'])) {
+        foreach ($data['tag'] as $tagName) {
+          if (empty($tagName)) {
+            continue;
+          }
+          $tag = Tags::where('tag', $tagName)->first();
+
+          if (!$tag) {
+            $id_tag = Str::random(16);
+            $tag = Tags::create(['tag_id' => $id_tag,'tag' => $tagName]);
+          }
+
+          TagsDest::create([
+            'tags_id' => $tag->tag_id,
+            'tags_destinations_id' => $id_destination,
+          ]);
+        }
+      }
       DB::commit();
     } catch (\Exception $e) {
       DB::rollBack();

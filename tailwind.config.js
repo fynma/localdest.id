@@ -13,6 +13,7 @@ module.exports = {
         'figma-textblue': '#0086C9',
         'figma-blue' : '#587DBD',
         'figma-btn-blue' : '#0B76BC',
+        'figma-progress-blue' : '#219EBC',
       },
     },
   },
