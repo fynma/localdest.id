@@ -15,6 +15,7 @@
     init = async () => {
         await loadPage();
         await loadReview();
+        await loadTag();
     }
 
     function truncateText(text, wordLimit) {
@@ -112,13 +113,13 @@
 
         var overpassUrl = 'https://overpass-api.de/api/interpreter';
         var query = `
-                        [out:json];
-                        (
-                            node["amenity"="restaurant"](around:${radius},${latitude},${longitude});
-                            node["tourism"="hotel"](around:${radius},${latitude},${longitude});
-                        );
-                        out body;
-                    `;
+        [out:json];
+        (
+            node["amenity"="restaurant"](around:${radius},${latitude},${longitude});
+            node["tourism"="hotel"](around:${radius},${latitude},${longitude});
+        );
+        out body;
+    `;
 
         $.ajax({
             url: overpassUrl,
@@ -128,12 +129,12 @@
             },
             dataType: 'json',
             success: function(data) {
+                console.log("Data received from Overpass API:", data);
                 $('#results').empty();
                 if (data.elements.length > 0) {
                     data.elements.forEach(function(place) {
                         var name = place.tags.name || "Unnamed Place";
-                        var distance = calculateDistance(latitude, longitude, place
-                            .lat, place.lon);
+                        var distance = calculateDistance(latitude, longitude, place.lat, place.lon);
                         var addressParts = [];
                         if (place.tags['addr:street']) addressParts.push(place.tags['addr:street']);
                         if (place.tags['addr:city']) addressParts.push(place.tags['addr:city']);
@@ -142,99 +143,61 @@
                         var address = addressParts.length > 0 ? addressParts.join(', ') :
                             'Tidak dapat menampilkan alamat';
 
-
-                        var placeDiv = $(`<article class="cursor-pointer" onclick="window.location.href='https://www.google.com/maps/search/?api=1&query=${place.lat},${place.lon}'" target="_blank">
+                        var placeDiv = $(`
+                        <article class="cursor-pointer" onclick="window.location.href='https://www.google.com/maps/search/?api=1&query=${place.lat},${place.lon}'" target="_blank">
                             <div class="flex mb-4">
-                                <img class="w-24 h-24 me-4 rounded-lg object-cover	" src="/storage/hotel.png"
-                                    alt="">
-
-                                {{-- <span class="w-10 h-10 me-4 rounded-full bg-figma-btn-blue text-center">S</span> --}}
+                                <img class="w-24 h-24 me-4 rounded-lg object-cover" src="/storage/hotel.png" alt="">
                                 <div class="font-medium dark:text-white">
                                     <p class="">${name}</p>
-
                                     <div class="flex items-center mt-2 space-x-1 rtl:space-x-reverse">
-                                        <svg class="w-4 h-4 text-yellow-300" aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                            viewBox="0 0 22 20">
-                                            <path
-                                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                                        </svg>
-                                        <svg class="w-4 h-4 text-yellow-300" aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                            viewBox="0 0 22 20">
-                                            <path
-                                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                                        </svg>
-                                        <svg class="w-4 h-4 text-yellow-300" aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                            viewBox="0 0 22 20">
-                                            <path
-                                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                                        </svg>
-                                        <svg class="w-4 h-4 text-yellow-300" aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                            viewBox="0 0 22 20">
-                                            <path
-                                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                                        </svg>
-                                        <svg class="w-4 h-4 text-gray-300 dark:text-gray-500" aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                            viewBox="0 0 22 20">
-                                            <path
-                                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                                        </svg>
-                                        <span
-                                            class="ms-2 me-2 font-normal dark:text-white mx-4 border-r-2 px-2">4.8</span>
-                                        {{-- <span class="ms-2 font-normal text-gray-400 dark:text-white mx-4">|</span> --}}
-                                        <span
-                                            class="ms-2 font-normal dark:text-white mx-4 border-r-2 px-2">${place.tags.amenity ?? 'Hotel'}</span>
-                                        {{-- <span class="font-normal text-gray-400 dark:text-white mx-4">|</span> --}}
+                                        <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20"><path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/></svg>
+                                        <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20"><path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/></svg>
+                                        <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20"><path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/></svg>
+                                        <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20"><path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/></svg>
+                                        <svg class="w-4 h-4 text-gray-300 dark:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20"><path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/></svg>
+                                        <span class="ms-2 me-2 font-normal dark:text-white mx-4 border-r-2 px-2">4.8</span>
+                                        <span class="ms-2 font-normal dark:text-white mx-4 border-r-2 px-2">${place.tags.amenity ?? 'Hotel'}</span>
                                         <span class="ms-4 font-normal dark:text-white mx-4 ">${distance}m</span>
-
                                     </div>
-
-                                    <p class="font-normal mt-2"> ${address}
-                                    </p>
+                                    <p class="font-normal mt-2"> ${address}</p>
                                 </div>
                             </div>
-                            {{-- <a href="#"
-                                class="block mb-5 text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">Read
-                                more</a> --}}
-                        </article>`);
-                        // placeDiv.text(name + ' - ' + place.tags.amenity || place
-                        //     .tags.tourism + ' - ' + (distance / 1000).toFixed(
-                        //         2) + ' km');
-                        console.log(placeDiv)
+                        </article>
+                    `);
+                        console.log(placeDiv);
                         $('.nearby-section').append(placeDiv);
                     });
                 } else {
                     var placeDiv = $(`<article class="cursor-pointer" target="_blank">
-                        <h1>Tidak ada data yang bisa ditampilkan</h1>
-                        </article>`);
+                    <h1>Tidak ada data yang bisa ditampilkan</h1>
+                </article>`);
                     $('.nearby-section').append(placeDiv);
                 }
             },
-            error: function() {
+            error: function(error) {
+                console.error("Error from Overpass API:", error);
                 $('#results').text('Gagal mendapatkan data dari Overpass API.');
             }
         });
     }
 
     function calculateDistance(lat1, lon1, lat2, lon2) {
-        var R = 6371e3;
-        var φ1 = lat1 * Math.PI / 180;
-        var φ2 = lat2 * Math.PI / 180;
-        var Δφ = (lat2 - lat1) * Math.PI / 180;
-        var Δλ = (lon2 - lon1) * Math.PI / 180;
-
-        var a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
-            Math.cos(φ1) * Math.cos(φ2) *
-            Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+        var R = 6371; // Radius of the earth in km
+        var dLat = deg2rad(lat2 - lat1); // deg2rad below
+        var dLon = deg2rad(lon2 - lon1);
+        var a =
+            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-        var d = R * c;
-        return Math.round(d);
+        var distance = R * c * 1000; // Distance in m
+        return Math.round(distance); // Return rounded distance
     }
+
+    function deg2rad(deg) {
+        return deg * (Math.PI / 180);
+    }
+
 
     function loadReview() {
         const urlParams = new URLSearchParams(window.location.search);
@@ -245,7 +208,7 @@
                     id: id
                 })
                 .then(function(response) {
-                    response.data.sort((a, b) => new Date(b.review_created_at) - new Date(a.review_created_at));
+                    // response.data.sort((a, b) => new Date(b.review_created_at) - new Date(a.review_created_at));
                     var ratingWithPhoto = '';
                     var ratingNonPhoto = '';
                     var templatePhoto = '';
@@ -412,7 +375,6 @@
                         }
                     });
                     $('.rating-container').append(ratingWithPhoto + ratingNonPhoto);
-
                 })
                 .catch(function(error) {
                     console.error('Ada masalah dalam mengambil data:', error);
@@ -484,5 +446,21 @@
                     // }
                 });
             });
+    }
+    function loadTag() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('dest');
+        axios.post(APP_URL + 'api/destination/getTagDest', {
+                _token: '{{ csrf_token() }}',
+                id : id,
+            })
+            .then(function(response) {
+                console.log(response)
+              
+            })
+            .catch(function(error) {
+                console.error('Ada masalah dalam mengambil data:', error);
+            });
+
     }
 </script>

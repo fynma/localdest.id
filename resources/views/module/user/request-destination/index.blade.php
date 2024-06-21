@@ -51,6 +51,38 @@
                             class="bg-white border border-gray-200 text-gray-900 text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Enter Name" required="">
                     </div>
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="province"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Province</label>
+                        <select name="province" id="province" onchange="quick.getCity('city', this.value)"
+                            class="bg-white border border-gray-200 text-gray-900 text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option value="" disabled>--Choose--</option>
+                        </select>
+                    </div>
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="city"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">City</label>
+                        <select name="city" id="city"
+                            class="bg-white border border-gray-200 text-gray-900 text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        </select>
+                    </div>
+                    <div class="col-span-2">
+                        <label for="tag"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tag</label>
+                        <select name="tag[]" id="tag" multiple
+                            class="select2 bg-white border border-gray-200 text-gray-900 text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        </select>
+                    </div>
+                    {{-- <div class="col-span-1">
+                        <label for="newTag" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">New
+                            Tag</label>
+                        <input type="text" name="newTag" id="newTag"
+                            class="bg-white border border-gray-200 text-gray-900 text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            placeholder="Enter new tag">
+                        <button id="addTag"
+                            class="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Add
+                            Tag</button>
+                    </div> --}}
                     <div class="col-span-2 mt-2">
                         <label for="description"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
@@ -61,12 +93,14 @@
                             class="bg-white border border-gray-200 text-gray-900 text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"></textarea>
                     </div>
                     <div class="col-span-2 mt-2">
-                        <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address <span class="text-xs text-red-500">(Max 100 Char)</span></label>
+                        <label for="address"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address <span
+                                class="text-xs text-red-500">(Max 100 Char)</span></label>
                         <input type="address" name="address" id="address" maxlength="100"
                             class="bg-white border border-gray-200 text-gray-900 text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Enter Address" required="">
                     </div>
-                    
+
                     {{-- <div class="col-span-2 mt-2">
                         <label for="imgthumb" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Image Thumbnail</label>
