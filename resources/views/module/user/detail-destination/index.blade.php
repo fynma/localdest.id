@@ -233,11 +233,11 @@
                     </div>
                     <p class="font-semibold mb-5 ">Tag</p>
                     <div class="tag-sect mb-5 flex flex-wrap gap-2 justify-start">
-                        <a href="" class="bg-gray-200 p-2 rounded">Beach</a>
+                        {{-- <a href="" class="bg-gray-200 p-2 rounded">Beach</a>
                         <a href="" class="bg-gray-200 p-2 rounded">Jawa Timur</a>
                         <a href="" class="bg-gray-200 p-2 rounded">Indonesia</a>
                         <a href="" class="bg-gray-200 p-2 rounded">Malang</a>
-                        <a href="" class="bg-gray-200 p-2 rounded">Bululawang</a>
+                        <a href="" class="bg-gray-200 p-2 rounded">Bululawang</a> --}}
                     </div>
                     <div class="create-section flex flex-col bg-gray-200 rounded justify-center items-center p-4">
                         <h1 class="font-bold text-center text-lg mb-5">Start creating your wishlist<br> destination

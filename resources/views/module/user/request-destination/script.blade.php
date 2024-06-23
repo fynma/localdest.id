@@ -215,7 +215,7 @@
             })
             .then(function(response) {
                 console.log(response)
-                var data = response.data
+                var data = response.data.tag
                 let tags = data.map(tagsdata => {
                     return {
                         id: tagsdata.tag,

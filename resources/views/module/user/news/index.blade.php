@@ -3,8 +3,8 @@
 
 <head>
     @include('package.headerpack')
-    <title>News</title>
-    <style>
+    <title>Localdest - News</title>
+    <link rel="icon" type="image/png" href="/storage/vector/logo-localdest.jpg">    <style>
         .hidden-scrollbar::-webkit-scrollbar {
             display: none;
         }

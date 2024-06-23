@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Poppins', 'sans-serif'],
+      },
       colors: {
         'figma-grad-blue': '#026AA2',
         'figma-grad-toblueend': '#0A3092',
@@ -15,6 +18,9 @@ module.exports = {
         'figma-btn-blue' : '#0B76BC',
         'figma-progress-blue' : '#219EBC',
       },
+    },
+      fontFamily: {
+      sans: ['Poppins', 'sans-serif'], // Setel font global
     },
   },
   plugins: [

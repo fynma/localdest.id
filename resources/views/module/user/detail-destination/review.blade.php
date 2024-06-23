@@ -143,7 +143,7 @@
                 </svg></button>
     </form>
 </div>
-<div class="tag-sect mb-5 flex flex-wrap gap-2 justify-start" id="photo-preview"></div>
+<div class="mb-5 flex flex-wrap gap-2 justify-start" id="photo-preview"></div>
 
 <hr class="border-gray-300 border-dashed mt-5 mb-10">
 <h3 class="font-semibold mb-5 mt-5">Review</h3>
