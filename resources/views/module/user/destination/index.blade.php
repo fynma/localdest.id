@@ -169,9 +169,10 @@
                     <p class="text-white text-lg font-thin">Let's add your destination ideas for us here</p>
                 </div>
                 @auth
-                    <button onclick="window.location='/request-destination'" class="text-blue-600 bg-white px-4 py-2 rounded-full me-5">Request Destination</button>
+                    <button onclick="window.location='/request-destination'"
+                        class="text-blue-600 bg-white px-4 py-2 rounded-full me-5">Request Destination</button>
                 @else
-                    <button data-popover-target="login-alert-popover" type="disabled" 
+                    <button data-popover-target="login-alert-popover" type="disabled"
                         class="text-blue-600 bg-white px-4 py-2 rounded-full me-5">Request Destination</button>
                     <div data-popover id="login-alert-popover" role="tooltip"
                         class="absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
@@ -366,17 +367,51 @@
                                                                     d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                                                             </svg>
                                                         </div>
-                                                        <input type="search" id="default-search"
+                                                        <input type="search" id="search-bar" autocomplete="off"
                                                             class="block w-full pl-10 pr-4 py-2 text-sm text-gray-900 bg-white border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
                                                             placeholder="Search Destination..." required />
+                                                        <div class="hidden bg-white border w-100 absolute container mx-auto p-4 pt-2 mt-2 z-10"
+                                                            style="">
+                                                            <div class="last-search mb-5">
+                                                                <span class="">Last Search</span>
+                                                                <div class="list-search px-2">
+                                                                    <div class="search mt-2">Bromo</div>
+                                                                    <div class="search mt-2">Air Terjun</div>
+                                                                    <div class="search mt-2">Pantai</div>
+                                                                    <div class="search mt-2">Danau</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="search-by-tag">
+                                                                <span class="">Search By
+                                                                    Popular Tags<span></span></span>
+                                                                <div class="list-tag">
+                                                                    <div
+                                                                        class="p-1 tag mt-2 flex justify-between hover:bg-gray-50 cursor-pointer">
+                                                                        <span>#Tumpang</span>
+                                                                        <span class="text-gray-400">200 Post</span>
+                                                                    </div>
+                                                                    <div
+                                                                        class="p-1 tag mt-2 flex justify-between hover:bg-gray-50 cursor-pointer">
+                                                                        <span>#Tumpang</span>
+                                                                        <span class="text-gray-400">200 Post</span>
+                                                                    </div>
+                                                                    <div
+                                                                        class="p-1 tag mt-2 flex justify-between hover:bg-gray-50 cursor-pointer">
+                                                                        <span>#Tumpang</span>
+                                                                        <span class="text-gray-400">200 Post</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
                                                     </div>
                                                 </form>
                                             </div>
                                         </div>
                                     </form>
-
                                 </div>
-                                <div class="listing-wisata-pagination mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                                <div
+                                    class="listing-wisata-pagination mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                                     {{-- <div class="relative">
                                         <div class="photo-container h-80 w-full relative cursor-pointer">
                                             <div class="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
@@ -527,7 +562,7 @@
                 }
             });
         </script>
-            @include('module.user.destination.script')
+        @include('module.user.destination.script')
 
     </body>
 

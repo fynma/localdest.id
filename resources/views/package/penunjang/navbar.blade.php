@@ -66,7 +66,7 @@
     }
 </style>
 
-<nav class="fixed top-0 left-0 right-0 bg-transparent duration-150 z-10  navbar-full p-4">
+<nav class="fixed top-0 left-0 right-0 bg-transparent duration-150 z-20  navbar-full p-4">
     <div class="container flex items-center justify-between mx-auto">
         <div class="flex items-center justify-center space-x-3 rtl:space-x-reverse">
             <a href="/" class="flex items-center">
@@ -89,7 +89,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link news">
+                        <a href="/news" class="nav-link news">
                             NEWS
                         </a>
                     </li>
@@ -112,7 +112,7 @@
 
         <div class="flex items-center md:order-2 space-x-3 gap-2 md:space-x-0 rtl:space-x-reverse">
 
-            <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
+            {{-- <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
                 class="change-color-area text-white bg-transparent focus:ring-4 focus:outline-none focus:ring-white rounded-lg text-sm  py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 type="button">EN <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                     fill="none" viewBox="0 0 10 6">
@@ -134,8 +134,8 @@
                             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">ENGLISH</a>
                     </li>
                 </ul>
-            </div>
-
+            </div> --}}
+{{-- 
             <button type="button" id="toggle-search" aria-controls="navbar-search" aria-expanded="false"
                 class=" text-gray-500 dark:text-gray-400 focus:outline-none dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 ">
                 <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -149,12 +149,12 @@
                 <input type="text" id="search-navbar"
                     class="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Search...">
-            </div>
+            </div> --}}
             {{-- after login --}}
             @auth
                 <button id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                     data-dropdown-placement="bottom"
-                    class="text-white focus:ring-4 focus:outline-ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800   relative"
+                    class="text-white focus:ring-4 focus:outline-ring-4 focus:ring-blue-300 font-lg rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800   relative"
                     type="button">
                     <div class=" w-6 h-6 rounded-full bg-white flex justify-center items-center left-1/2 -ml-4">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
@@ -167,12 +167,12 @@
                                 fill="#1B61AD" />
                         </svg>
                     </div>
-                    <span class="ml-2">{{ auth()->user()->name }}</span>
-                    <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    <span class="ml-2  font-semibold">{{ auth()->user()->name }}</span>
+                    {{-- <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 1 4 4 4-4" />
-                    </svg>
+                    </svg> --}}
                 </button>
                 <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
                     id="user-dropdown">
@@ -183,7 +183,7 @@
                     </div>
                     <ul class="py-2" aria-labelledby="user-menu-button">
                         <li>
-                            <a href="#"
+                            <a href="/profile"
                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">My Profile</a>
                         </li>
                         <li>
@@ -427,6 +427,7 @@
             $('.logo-light').show()
             $('.nav-link').css('color', 'black')
             $('.nav-link').addClass('light-mode')
+            $('#user-menu-button').removeClass('text-white')
         } else {
             document.addEventListener('scroll', function() {
                 if (window.scrollY > 50) {
@@ -442,6 +443,7 @@
                     $('.login-btn').removeClass('border-white');
                     $('.login-btn').addClass('border-black')
                     $('.nav-link').addClass('light-mode')
+                    $('#user-menu-button').removeClass('text-white')
                 } else {
                     text_a.addClass('text-white')
                     text_a.removeClass('text-black')
@@ -455,6 +457,8 @@
                     $('.login-btn').addClass('border-white');
                     $('.login-btn').removeClass('border-black')
                     $('.nav-link').removeClass('light-mode')
+                    $('#user-menu-button').addClass('text-white')
+
                 }
             });
         }

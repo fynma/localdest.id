@@ -339,7 +339,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="tag-sect mb-5 flex flex-wrap gap-2 justify-start">
+                        <div class="mb-5 flex flex-wrap gap-2 justify-start">
                            ${templatePhoto}
                         </div>
 
@@ -447,16 +447,22 @@
                 });
             });
     }
+
     function loadTag() {
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get('dest');
         axios.post(APP_URL + 'api/destination/getTagDest', {
                 _token: '{{ csrf_token() }}',
-                id : id,
+                id: id,
             })
             .then(function(response) {
                 console.log(response)
-              
+                var tag_template = ``;
+                $.each(response.data, function(index, data) {
+                    tag_template = ` <a href="" class="bg-gray-200 p-2 rounded">${data.tag}</a>`
+                    $('.tag-sect').append(tag_template);
+
+                });
             })
             .catch(function(error) {
                 console.error('Ada masalah dalam mengambil data:', error);

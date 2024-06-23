@@ -35,7 +35,7 @@
             </p>
         </div>
         <div class="flex justify-between gap-5">
-            <form class="request-destination-form mt-10 w-3/4" name="form-request" method="POST"
+            <form class="request-destination-form mt-10 w-4/6" name="form-request" method="POST"
                 action="javascript:createDest()" enctype="multipart/form-data">
 
                 @csrf
@@ -257,8 +257,13 @@
                     Apply New Destination
                 </button>
             </form>
-            <div class="mt-10 w-1/4 h-64 sm:p-6" id="maps-selector">
 
+            <div class="mt-10 w-2/6 ">
+                <label for="titledestination"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Maps</label>
+                <div class=" h-64 w-100 sm:p-6 z-10" id="maps-selector">
+
+                </div>
             </div>
         </div>
     </div>

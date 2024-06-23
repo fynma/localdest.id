@@ -31,10 +31,10 @@ Route::get('/detail-destination', function () {
 Route::get('/contact-us', function () {
     return view('module.user.contactus.index');
 });
-Route::get('/news', function (){
+Route::get('/news', function () {
     return view('module.user.news.index');
 });
-Route::get('/open-news', function (){
+Route::get('/open-news', function () {
     return view('module.user.news.detail-news');
 });
 Route::get('/destination', function () {
@@ -55,5 +55,8 @@ Route::middleware([loginCheck::class])->group(function () {
         foreach (['index', 'create'] as $key => $value) {
             Route::post('/review/' . $value, $value);
         }
+    });
+    Route::get('/profile', function () {
+        return view('module.user.profile.index');
     });
 });

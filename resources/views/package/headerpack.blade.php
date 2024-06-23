@@ -1,7 +1,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css','resources/js/app.js'])
     <link href="
 https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/css/splide.min.css
 " rel="stylesheet">
@@ -12,6 +12,7 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/css/splide.min.css
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
     {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
     <link href="{!! asset('/storage/assets/css/select2.min.css') !!}" rel="stylesheet" />
+    {{-- <link href="{!! asset('/storage/assets/css/searchbar.css') !!}" rel="stylesheet" /> --}}
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>

@@ -30,7 +30,8 @@ class DestinationController extends Controller
   }
   public function getTag(Request $request)
   {
-    $data = DB::table('tags')->select(['tag_id', 'tag'])->get();
+    $data['tag'] = DB::table('tags')->select(['tag_id', 'tag'])->get();
+    $data['count_tag'] = DB::table('v_count_tags')->get();
     return response()->json($data);
   }
   public function getTagDest(Request $request)
