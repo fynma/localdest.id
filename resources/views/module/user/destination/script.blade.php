@@ -51,7 +51,7 @@
                                             <img src="${item.destination_thumbnail ? '/storage/uploaded-thumbnail/' + item.destination_thumbnail : '/storage/no-img.webp'}" alt="Photo 1" class="w-full h-full object-cover rounded-xl">
                                             <div class="absolute bottom-0 left-0 right-0 text-white p-4">
                                                 <p class="text-sm font-bold">${item.destination_name}</p>
-                                                <p class="address">${item.destination_address}</p>
+                                                <p class="address">${item.destination_city_name + ' | ' + item.destination_province_name}</p>
                                                 <p class="rating">4.2 ⭐⭐⭐</p>
                                             </div>
                                         </div>

@@ -40,7 +40,11 @@ Route::get('/open-news', function () {
 Route::get('/destination', function () {
     return view('module.user.destination.index');
 });
-
+Route::controller(ReviewController::class)->group(function () {
+    foreach (['index'] as $key => $value) {
+        Route::post('/review/' . $value, $value);
+    }
+});
 //route untuk controller maupun view yg restricted/ auth required di place d bawah situ ye
 Route::middleware([loginCheck::class])->group(function () {
     Route::get('/request-destination', function () {
@@ -52,7 +56,7 @@ Route::middleware([loginCheck::class])->group(function () {
         }
     });
     Route::controller(ReviewController::class)->group(function () {
-        foreach (['index', 'create'] as $key => $value) {
+        foreach (['create', 'checkExistingReview'] as $key => $value) {
             Route::post('/review/' . $value, $value);
         }
     });

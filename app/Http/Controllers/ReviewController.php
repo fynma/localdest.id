@@ -14,19 +14,64 @@ class ReviewController extends Controller
 {
   public function index(Request $request)
   {
-      $reviews = DB::table('reviews')
-          ->join('users', 'reviews.review_user_id', '=', 'users.id')
-          ->where('reviews.review_destination_id', $request->post('id'))
-          ->select('reviews.*', 'users.name', 'users.photo')
-          ->get();
-  
-      foreach ($reviews as $review) {
-          $review->review_photos = DB::table('review_image')->where('review_review_id', $review->review_id)->get();
-      }
-  
-      return response()->json($reviews);
+    $destinationId = $request->post('id');
+
+    $reviews = DB::table('reviews')
+      ->join('users', 'reviews.review_user_id', '=', 'users.id')
+      ->where('reviews.review_destination_id', $destinationId)
+      ->select('reviews.*', 'users.name', 'users.photo')
+      ->orderBy('reviews.review_created_at', 'desc')
+      ->get();
+
+    $reviewIds = $reviews->pluck('review_id');
+    $reviewPhotos = DB::table('review_image')
+      ->whereIn('review_review_id', $reviewIds)
+      ->get()
+      ->groupBy('review_review_id');
+
+    foreach ($reviews as $review) {
+      $review->review_photos = $reviewPhotos->get($review->review_id, collect());
+    }
+
+    $data = DB::table('v_count_review')
+      ->where('review_destination_id', $destinationId)
+      ->get();
+
+    return response()->json([
+      'reviews' => $reviews,
+      'data' => $data,
+    ]);
   }
-  
+  public function checkExistingReview(Request $request)
+  {
+    $userId = session('id');
+    $destinationId = $request->post('id');
+
+    $review = Review::where('review_user_id', $userId)
+      ->where('review_destination_id', $destinationId)
+      ->orderBy('review_created_at', 'asc')
+      ->select('review_id')
+      ->first();
+    $data = DB::table('reviews')
+      ->join('users', 'reviews.review_user_id', '=', 'users.id')
+      ->where('reviews.review_id', $review->review_id)
+      ->select('reviews.*', 'users.name', 'users.photo')
+      ->orderBy('reviews.review_created_at', 'desc')
+      ->first();
+    // dd($data);
+    // if($data['photo']){
+      
+    // }
+    $reviewPhotos = DB::table('review_image')
+      ->where('review_review_id', $review->review_id)
+      ->get();
+      // ->groupBy('review_review_id');
+    // dd($reviewPhotos);
+    // foreach ($data as $reviews) {
+    //   $reviews->review_photos = $reviewPhotos->get($reviews->review_id, collect());
+    // }
+    return response()->json(['review' => $data, 'reviewPhotos' => $reviewPhotos]);
+  }
 
   public function create(Request $request)
   {

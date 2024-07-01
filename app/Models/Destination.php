@@ -21,6 +21,8 @@ class Destination extends Model
         'destination_thumbnail',
         'destination_user_id',
         'thumbnail_name',
+        'destination_city',
+        'destination_province',
     ];
     const CREATED_AT = 'destination_created_at';
     const UPDATED_AT = 'destination_updated_at';

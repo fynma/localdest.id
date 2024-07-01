@@ -24,17 +24,17 @@
     @include('package.penunjang.navbar')
 
     <section id="hero-section" class="relative" style="">
-        <img src="/storage/bromo.png" alt="" class="w-screen h-screen">
+        <img src="/storage/bromo.png" alt="" class="w-screen h-screen object-cover">
 
-        <div class="absolute inset-0 bg-black bg-opacity-40 p-4 pb-0 pl-32   lg-bigger:pt-20 flex items-center">
-            <div class="container mx-auto flex items-center justify-between" style="margin-top: auto">
-                <div class="text-white text-4xl mb-20">
+        <div class="absolute inset-0 bg-black bg-opacity-40 p-4 pb-0 lg:pl-32   lg-bigger:pt-20 flex items-center">
+            <div class="container mx-auto lg:flex items-center justify-between" style="margin-top: auto">
+                <div class="text-white text-center text-4xl mb-20">
                     <h1 class="font-poppins font-bold leading-relaxed">
                         Explore the World's Best <br>
                         <span>Travel Destinations</span>
                     </h1>
                 </div>
-                <div class="text-white w-1/2 mt-12 mb-20">
+                <div class="hidden lg:block text-white w-1/2 mt-12 mb-20">
                     <p class="text-lg sm:mb-12 font-medium">
                         Lorem ipsum dolor sit amet consectetur. Elementum nunc adipiscing ac at. Lectus sed justo
                         imperdiet mauris urna ut accumsan. Faucibus arcu odio aliquam rutrum vel mollis.
@@ -46,12 +46,12 @@
 
     <div class="container mx-auto p-4">
         <div class="explore-section mt-20">
-            <div class="text-black mr-20 text-4xl">
-                <h1 class="font-poppins font-bold leading-relaxed">
+            <div class="text-black lg:mr-20 text-4xl">
+                <h1 class="font-poppins text-center lg:text-left font-bold leading-relaxed">
                     Explore the World's Best Travel Destinations
                 </h1>
             </div>
-            <div class="p-sec mt-8">
+            <div class="text-center p-sec mt-8 lg:text-left">
                 <p>
                     Lorem ipsum dolor sit amet consectetur. Egestas nisi et phasellus orci urna cursus sed malesuada
                     sit.
@@ -61,7 +61,7 @@
             </div>
             <div id="fslider" class="mt-10">
                 <div class="splide__track">
-                    <div class="splide__list flex gap-x-4">
+                    <div class="splide__list flex gap-x-0.5 md:gap-x-0 lg:gap-x-4">
                         <div class="splide__slide relative">
                             <div class="photo-container h-80 w-72 relative cursor-pointer">
                                 <div class="absolute inset-0 bg-black bg-opacity-50  rounded-xl"></div>
@@ -163,49 +163,55 @@
         </div>
         <div class="request-section mt-20">
             <div
-                class="flex items-center justify-between w-full h-40 bg-gradient-to-r from-figma-grad-blue to-figma-grad-toblueend border border-gray-200 rounded-lg shadow dark:from-gray-800 dark:to-gray-700 p-4">
-                <div class="flex flex-col ml-5">
+                class="lg:flex items-center justify-between w-full h-50 lg:h-40 bg-gradient-to-r from-figma-grad-blue to-figma-grad-toblueend border border-gray-200 rounded-lg shadow dark:from-gray-800 dark:to-gray-700 p-4">
+                <div class="text-center lg:text-left flex flex-col lg:ml-5 ">
                     <bold class="text-white font-bold mb-2 text-2xl">Want to add a new destination for us?</bold>
                     <p class="text-white text-lg font-thin">Let's add your destination ideas for us here</p>
                 </div>
-                @auth
-                    <button onclick="window.location='/request-destination'"
-                        class="text-blue-600 bg-white px-4 py-2 rounded-full me-5">Request Destination</button>
-                @else
-                    <button data-popover-target="login-alert-popover" type="disabled"
-                        class="text-blue-600 bg-white px-4 py-2 rounded-full me-5">Request Destination</button>
-                    <div data-popover id="login-alert-popover" role="tooltip"
-                        class="absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-                        <div
-                            class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
-                            <h3 class="font-semibold text-gray-900 dark:text-white">Attention Required</h3>
+                <div class="button-only flex items-center justify-center mt-2 md:mt-5 lg:mt-0">
+                    @auth
+                        <button onclick="window.location='/request-destination'"
+                            class="text-blue-600 bg-white px-4 py-2 rounded-full me-5">Request Destination</button>
+                    @else
+                        <button data-popover-target="login-alert-popover" type="disabled"
+                            class="text-blue-600 bg-white px-4 py-2 rounded-full me-5">Request Destination</button>
+                        <div data-popover id="login-alert-popover" role="tooltip"
+                            class="absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                            <div
+                                class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
+                                <h3 class="font-semibold text-gray-900 dark:text-white">Attention Required</h3>
+                            </div>
+                            <div class="px-3 py-2">
+                                <p>Please register or log in to access this feature.</p>
+                            </div>
+                            <div data-popper-arrow></div>
                         </div>
-                        <div class="px-3 py-2">
-                            <p>Please register or log in to access this feature.</p>
-                        </div>
-                        <div data-popper-arrow></div>
-                    </div>
 
-                    @endif
+                        @endif
+                    </div>
                 </div>
             </div>
             <div class="findbest-section mt-20">
-                <div class="text-black mr-20 text-4xl">
-                    <h1 class="font-poppins font-bold leading-relaxed">
+                <div class="text-black lg:mr-20 text-4xl">
+                    <h1 class="text-center font-poppins font-bold leading-relaxed lg:text-left">
                         Find the best destination for your holiday
                     </h1>
                 </div>
-                <div class="p-sec mt-8">
+                <div class="p-sec mt-8 text-center lg:text-left">
                     <p>
                         Lorem ipsum dolor sit amet consectetur. Egestas nisi et phasellus orci urna cursus sed malesuada
                         sit.
                         Mauris facilisi tellus amet <br> eget.
-                        <strong class="font-semibold"> In mauris donec feugiat sit ac sit fermentum turpis odio.</strong>
+                        <strong class="font-semibold"> In mauris donec feugiat sit ac sit fermentum turpis
+                            odio.</strong>
                     </p>
                 </div>
-                <div class="flex justify-between mt-10">
-                    <div id="filter" class="w-56 p-3 dark:bg-gray-700 mt-5 border-r border-gray-200">
-                        <h6 class="mb-3 text-xl font-bold text-gray-900 dark:text-white">
+                <div class="md:flex md:gap-2 justify-between mt-10">
+                    <h6 class="text-center text-xl font-bold text-gray-900 md:hidden lg:hidden lg:text-left dark:text-white">
+                        Filter
+                    </h6>
+                    <div id="filter" class="flex gap-10 justify-between md:block lg:block md:w-56 lg:w-56 lg:p-3 dark:bg-gray-700 lg:mt-5 md:border-r lg:border-r border-gray-200">
+                        <h6 class="hidden mb-3 text-xl md:block lg:block font-bold text-gray-900 dark:text-white">
                             Filter
                         </h6>
                         <div class="category mt-10">
@@ -335,7 +341,7 @@
                         </div>
 
                     </div>
-                    <div class="card-section w-full mx-auto mt-5 ml-5">
+                    <div class="card-section w-full mx-auto mt-5 lg:ml-5">
 
                         <form class="flex items-center w-full">
                             <label for="simple-search" class="sr-only">Search</label>
@@ -411,7 +417,7 @@
                                     </form>
                                 </div>
                                 <div
-                                    class="listing-wisata-pagination mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                                    class="listing-wisata-pagination mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
                                     {{-- <div class="relative">
                                         <div class="photo-container h-80 w-full relative cursor-pointer">
                                             <div class="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>

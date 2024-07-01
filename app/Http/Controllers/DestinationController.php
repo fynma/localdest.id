@@ -16,10 +16,22 @@ class DestinationController extends Controller
 {
   public function index()
   {
-    $data = DB::table('v_detail_destination')->select(['destination_id', 'destination_name', 'destination_thumbnail', 'destination_address'])->get();
+    $data = DB::table('v_detail_destination')->select(['destination_id', 'destination_name', 'destination_thumbnail', 'destination_address', 'destination_city_name', 'destination_province_name', 'destination_city', 'destination_province'])->get();
+
+    $data = $data->map(function ($item) {
+      $item->destination_city_name = $this->toTitleCase($item->destination_city_name);
+      $item->destination_province_name = $this->toTitleCase($item->destination_province_name);
+      return $item;
+    });
 
     return response()->json($data);
   }
+
+  private function toTitleCase($string)
+  {
+    return ucwords(strtolower($string));
+  }
+
   public function loadDetailDestination(Request $request)
   {
     $id = $request->post('id');
@@ -42,7 +54,32 @@ class DestinationController extends Controller
   }
   public function create(Request $request)
   {
-    // dd($request->all());
+    // dd($request->post());
+    $request->validate([
+      'title-destination' => 'required|string|max:255',
+      'description' => 'required|string',
+      'address' => 'required|string|max:255',
+      'inp-longitude' => 'required|numeric',
+      'inp-latitude' => 'required|numeric',
+      'thumbnail-file' => 'required',
+      'files' => 'required',
+      // 'files.*' => 'file',
+      'city' => 'required|string|max:255',
+      'province' => 'required|string|max:255',
+      'tag' => 'required|array',
+      'tag.*' => 'string|max:255',
+    ], [
+      'inp-longitude.required' => 'Select the Map',
+      'inp-latitude.required' => 'Select the Map',
+      'thumbnail-file.required' => 'Thumbnail is required',
+      'city.required' => 'City is required',
+      'province.required' => 'Province is required',
+      'tag.required' => 'Tag is required',
+      'files.required' => 'Photo is required',
+      'address.required' => 'Address is required',
+      'description.required' => 'Description is required',
+      'title-destination.required' => 'Title is required',
+    ]);;
     DB::beginTransaction();
     try {
 
@@ -88,6 +125,8 @@ class DestinationController extends Controller
         'destination_thumbnail' => $data['thumbnail_name'],
         'destination_active' => 0,
         'destination_user_id' => $userId,
+        'destination_city' => $data['city'],
+        'destination_province' => $data['province'],
       ];
       Destination::create($destData);
       if (isset($data['tag'])) {
@@ -99,7 +138,7 @@ class DestinationController extends Controller
 
           if (!$tag) {
             $id_tag = Str::random(16);
-            $tag = Tags::create(['tag_id' => $id_tag,'tag' => $tagName]);
+            $tag = Tags::create(['tag_id' => $id_tag, 'tag' => $tagName]);
           }
 
           TagsDest::create([
