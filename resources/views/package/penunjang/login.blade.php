@@ -1,15 +1,13 @@
 <form class="p-4 login-form md:p-5" name="form-login" method="POST" action="javascript:signin()">
     <div class="grid gap-4 mb-4 grid-cols-2">
         <div class="col-span-2">
-            <label for="email"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
             <input type="email" name="email" id="email"
                 class="bg-white border border-gray-200 text-gray-900 text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder="Enter your Email" required="">
         </div>
         <div class="col-span-2">
-            <label for="password"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
             <input type="password" name="password" id="password"
                 class="bg-white border border-gray-200 text-gray-900 text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder="Enter your Password" required="">
@@ -32,8 +30,8 @@
     <div class="flex justify-center mb-5">
         <button type="button"
             class="text-gray-900 inline-flex items-center justify-center bg-gray-100 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium text-sm px-5 py-2.5 text-center w-1/2 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">
-            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20"
-                class="mr-2" viewBox="0 0 48 48">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" class="mr-2"
+                viewBox="0 0 48 48">
                 <path fill="#FFC107"
                     d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z">
                 </path>
@@ -59,7 +57,7 @@
 </form>
 
 <script>
-        function signin() {
+    function signin() {
         var form = "form-login";
         var data = new FormData($('[name="' + form + '"]')[0]);
         var button = $('#login-account-button');
@@ -80,22 +78,22 @@
                 // quick.unblockPage()
                 if (response.data.success) {
                     button.prop('disabled', false);
-
-                    quick.toastNotif({
-                        title: response.data.message,
+                    window.location.reload();
+                    quick.customToastNotif({
+                        text: response.data.message,
                         icon: 'success',
-                        timer: 1000,
-                        callback: function() {
-                            window.location.reload();
-                        }
+                        timer: 3000,
+                        // callback: function() {
+                        //     window.location.reload();
+                        // }
                     });
                 } else {
                     button.prop('disabled', false);
 
-                    quick.toastNotif({
-                        title: response.data.message,
+                    quick.customToastNotif({
+                        text: response.data.message,
                         icon: 'error',
-                        timer: 3000,
+                        timer: 5000,
                         // callback: function() {
                         //     window.location.reload()
                         // }
@@ -106,10 +104,10 @@
                 button.prop('disabled', false);
 
                 console.error('There has been a problem with your Axios operation:', error.response.data.message);
-                quick.toastNotif({
-                    title: error.response.data.message,
+                quick.customToastNotif({
+                    text: error.response.data.message,
                     icon: 'error',
-                    timer: 3000,
+                    timer: 5000,
                     // callback: function() {
                     //     window.location.reload()
                     // }

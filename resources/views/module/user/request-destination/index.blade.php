@@ -73,6 +73,13 @@
                             class="select2 bg-white border border-gray-200 text-gray-900 text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         </select>
                     </div>
+                    <div class="col-span-2">
+                        <label for="category"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">category</label>
+                        <select name="category" id="category" multiple
+                            class="select2 bg-white border border-gray-200 text-gray-900 text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        </select>
+                    </div>
                     {{-- <div class="col-span-1">
                         <label for="newTag" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">New
                             Tag</label>
@@ -148,7 +155,25 @@
                                 <input id="dropzone-file" name="thumbnail-file" type="file" class="hidden" />
                             </label>
                         </div>
+                    </div>
 
+                    <!-- Cropper Modal -->
+                    <div id="cropper-modal"
+                        class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 hidden z-50">
+                        <div class="bg-white rounded-lg overflow-hidden w-11/12 md:w-2/3 lg:w-1/2">
+                            <div class="p-4 border-b">
+                                <h2 class="text-lg font-semibold text-gray-900">Crop Image</h2>
+                            </div>
+                            <div class="">
+                                <img id="crop-image" class="max-w-full">
+                            </div>
+                            <div class="p-4 border-t flex justify-end space-x-2">
+                                <button id="crop-button" type="button"
+                                    class="bg-blue-500 text-white px-4 py-2 rounded">Crop</button>
+                                <button id="cancel-button" type="button"
+                                    class="bg-gray-300 text-gray-700 px-4 py-2 rounded">Cancel</button>
+                            </div>
+                        </div>
                     </div>
 
                     {{-- <div class="col-span-2 border-b-2 mt-2">
@@ -250,6 +275,23 @@
                         <span class="text-gray-400 font-semibold" id="file-count">0 Files</span>
                         <div id="file-list"></div>
                     </div>
+                    <div id="cropper-modal2"
+                    class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 hidden z-50">
+                    <div class="bg-white rounded-lg overflow-hidden w-11/12 md:w-2/3 lg:w-1/2">
+                        <div class="p-4 border-b">
+                            <h2 class="text-lg font-semibold text-gray-900">Crop Image</h2>
+                        </div>
+                        <div class="">
+                            <img id="crop-image2" class="max-w-full">
+                        </div>
+                        <div class="p-4 border-t flex justify-end space-x-2">
+                            <button id="crop-button2" type="button"
+                                class="bg-blue-500 text-white px-4 py-2 rounded">Crop</button>
+                            <button id="cancel-button" type="button"
+                                class="bg-gray-300 text-gray-700 px-4 py-2 rounded">Cancel</button>
+                        </div>
+                    </div>
+                </div>
                 </div>
                 <button type="submit" id="create-dest-button"
                     class="text-white inline-flex items-center justify-center hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"

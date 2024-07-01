@@ -81,7 +81,7 @@
                 {{-- <span
                     class="text-white font-semibold whitespace-nowrap lg:text-2xl dark:text-white">LocalDest.id</span> --}}
             </a>
-            <div class="flex items-center justify-center text-white  md:order-1" id="navbar-user">
+            <div class="hidden lg:block flex items-center justify-center text-white  md:order-1" id="navbar-user">
                 <ul class="flex ml-2 space-x-4 md:space-x-8 p-0 m-0 list-none">
                     <li>
                         <a href="/destination" class="nav-link destination">
@@ -112,29 +112,39 @@
 
         <div class="flex items-center md:order-2 space-x-3 gap-2 md:space-x-0 rtl:space-x-reverse">
 
-            {{-- <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
-                class="change-color-area text-white bg-transparent focus:ring-4 focus:outline-none focus:ring-white rounded-lg text-sm  py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                type="button">EN <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                    fill="none" viewBox="0 0 10 6">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="m1 1 4 4 4-4" />
+           <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
+                class="lg:hidden change-color-area text-white bg-transparent text-sm  py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                type="button"><svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                    <path stroke="#ffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
                 </svg>
             </button>
 
             <!-- Dropdown menu -->
             <div id="dropdown"
                 class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                     <li>
-                        <a href="#"
-                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">INDONESIA</a>
+                        <a href="/destination" class="nav-link destination">
+                            DESTINATION
+                        </a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">ENGLISH</a>
+                        <a href="/news" class="nav-link news">
+                            NEWS
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link event">
+                            EVENT
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/contact-us" class="nav-link contact-us">
+                            CONTACT US
+                        </a>
                     </li>
                 </ul>
-            </div> --}}
+            </div> 
 {{-- 
             <button type="button" id="toggle-search" aria-controls="navbar-search" aria-expanded="false"
                 class=" text-gray-500 dark:text-gray-400 focus:outline-none dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 ">
