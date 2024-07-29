@@ -13,7 +13,6 @@ var quick = {
                     };
                 });
     
-                // Tambahkan opsi kosong di awal array provinces
                 provinces.unshift({
                     id: '',
                     text: ''
