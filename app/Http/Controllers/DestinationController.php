@@ -151,7 +151,8 @@ class DestinationController extends Controller
         $extension = $thumbnailFile->getClientOriginalExtension();
         $newThumbname = Str::random(15) . '_' . time() . '.' . $extension;
         $data['thumbnail_name'] = $newThumbname;
-        $thumbnailFile->storeAs('public/uploaded-thumbnail', $newThumbname);
+        // $thumbnailFile->storeAs('public/uploaded-thumbnail', $newThumbname);
+        $thumbnailFile->storeAs('uploaded-thumbnail', $newThumbname, 'public');
       }
 
       //entry multiple photo
@@ -164,7 +165,8 @@ class DestinationController extends Controller
           // $data['multifiles_name'] = $newFilename;    
           $id_multiphoto = Str::random(16);
 
-          $file->storeAs('public/uploaded-destphoto', $newFilename);
+          // $file->storeAs('public/uploaded-destphoto', $newFilename);
+          $file->storeAs('uploaded-destphoto', $newThumbname, 'public');
 
           $photoQuery = [
             'image_id' => Str::random(16),
