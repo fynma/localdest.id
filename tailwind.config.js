@@ -17,6 +17,8 @@ module.exports = {
         'figma-blue' : '#587DBD',
         'figma-btn-blue' : '#0B76BC',
         'figma-progress-blue' : '#219EBC',
+        'figma-about-blue' : '#1E3A68',
+        // 'link-color' : '#2b5db9',
       },
     },
       fontFamily: {
