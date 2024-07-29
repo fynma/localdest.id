@@ -28,6 +28,7 @@
     .splide__arrow {
         display: none;
     }
+
     .transition {
         transition: all 0.3s;
     }
@@ -290,7 +291,7 @@
             <div id="fslider" style="mb-10">
                 <div class="splide__track h-96">
                     <div class="splide__list flex gap-x-4" style="align-items:flex-end">
-                        <div class="splide__slide">
+                        {{-- <div class="splide__slide">
                             <div
                                 class="photo-container h-80 w-72 relative cursor-pointer transition ease-in-out delay-150 hover:-translate-y-4 duration-200 ">
                                 <div class="absolute inset-0 bg-black bg-opacity-50  rounded-xl"></div>
@@ -304,68 +305,7 @@
                                     <button class="see-more text-white font-bold">See More</button>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="splide__slide relative">
-                            <div
-                                class="photo-container h-80 w-72 relative cursor-pointer transition ease-in-out delay-150 hover:-translate-y-4 duration-200">
-                                <div class="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
-                                <img src="storage/wisata/airterjun.png" alt="Photo 2"
-                                    class="w-full h-full object-cover rounded-xl">
-                                <div class="absolute bottom-0 left-0 right-0 text-white p-4">
-                                    <p class="text-sm font-bold">Air Terjun</p>
-                                    <p class="description">Lorem ipsum dolor sit amet consectetur. Egest <span
-                                            class="more" style="display: none;"> nisi orci urna cursus sed mala
-                                            sit.</span></p>
-                                    <button class="see-more text-white font-bold">See More</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="splide__slide relative">
-                            <div
-                                class="photo-container h-80 w-72 relative cursor-pointer transition ease-in-out delay-150 hover:-translate-y-4 duration-200">
-                                <div class="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
-                                <img src="storage/wisata/pantai.png" alt="Photo 3"
-                                    class="w-full h-full object-cover rounded-xl">
-                                <div class="absolute bottom-0 left-0 right-0 text-white p-4">
-                                    <p class="text-sm font-bold">Pantai Pasir Putih</p>
-                                    <p class="description">Lorem ipsum dolor sit amet consectetur. Egest <span
-                                            class="more" style="display: none;"> nisi orci urna cursus sed mala
-                                            sit.</span></p>
-                                    <button class="see-more text-white font-bold">See More</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="splide__slide relative">
-                            <div
-                                class="photo-container h-80 w-72 relative cursor-pointer transition ease-in-out delay-150 hover:-translate-y-4 duration-200">
-                                <div class="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
-                                <img src="storage/wisata/danau.png" alt="Photo 3"
-                                    class="w-full h-full object-cover rounded-xl">
-                                <div class="absolute bottom-0 left-0 right-0 text-white p-4">
-                                    <p class="text-sm font-bold">Danau Putri</p>
-                                    <p class="description">Lorem ipsum dolor sit amet consectetur. Egest <span
-                                            class="more" style="display: none;"> nisi orci urna cursus sed mala
-                                            sit.</span></p>
-                                    <button class="see-more text-white font-bold">See More</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="splide__slide relative">
-                            <div
-                                class="photo-container h-80 w-72 relative cursor-pointer transition ease-in-out delay-150 hover:-translate-y-4 duration-200">
-                                <div class="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
-                                <img src="storage/wisata/danau.png" alt="Photo 3"
-                                    class="w-auto h-full object-cover rounded-xl">
-                                <div class="absolute bottom-0 left-0 right-0 text-white p-4">
-                                    <p class="text-sm font-bold">Danau Putri</p>
-                                    <p class="description">Lorem ipsum dolor sit amet consectetur. Egest <span
-                                            class="more" style="display: none;"> nisi orci urna cursus sed mala
-                                            sit.</span></p>
-                                    <button class="see-more text-white font-bold">See More</button>
-                                </div>
-                            </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="flex justify-end items-center mt-2 gap-5">
@@ -440,7 +380,7 @@
                 </div>
 
 
-                <div class="splide__list flex gap-x-4">
+                <div class="flex gap-x-4">
                     <div class="splide__slide relative">
                         <div class="photo-container h-80 w-72 relative cursor-pointer">
                             <div class="absolute inset-0 bg-black bg-opacity-50  rounded-xl"></div>
@@ -660,43 +600,7 @@
         //         speed: 1,
         //     },
         // });
-        $(document).ready(function() {
-            var splide = new Splide('#fslider', {
-                type: 'slide',
-                perPage: 5,
-                gap: '1rem',
-                pagination: false,
-                breakpoints: {
-                    1024: {
-                        perPage: 1
-                    }
-                }
-            }).mount();
-
-            function updateProgressBar() {
-                var currentSlide = splide.index;
-                var totalSlides = Math.max(splide.length - splide.options.perPage + 1,
-                    1); // Ensure totalSlides is never less than 1
-                var progressPercentage = (currentSlide + 1) / totalSlides * 100;
-                $('.progress-bar-fill').css('width', progressPercentage + '%');
-            }
-
-            updateProgressBar();
-
-            splide.on('move', function() {
-                updateProgressBar();
-            });
-
-            $('.splide-prev').on('click', function() {
-                splide.go('<');
-            });
-
-            $('.splide-next').on('click', function() {
-                splide.go('>');
-            });
-        });
-
-
+        APP_URL = "{{ getenv('APP_URL') }}/";
 
         $('.list-items').click(function() {
             $('.list-items hr').removeClass('w-28 border-figma-textblue').addClass(
@@ -754,8 +658,71 @@
         //     }
         // });
         a = async () => {
-            // firstslider.mount();
-            $('.splide__arrows').hide()
+            await loadNewestDestination()
+        }
+
+        function loadNewestDestination() {
+            axios.post(APP_URL + 'api/destination/getDestNewest', {
+                    _token: '{{ csrf_token() }}',
+                })
+                .then(function(response) {
+                    var data = response.data;
+                    console.log(data)
+                    let newestDestination = '';
+
+                    $.each(data, function(index, item) {
+                        newestDestination = `<div class="splide__slide relative" onclick="window.location.href='/detail-destination?dest=${item.destination_id}'">
+                            <div class="photo-container h-80 w-full relative cursor-pointer">
+                                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                                <img src="${item.destination_thumbnail ? '/storage/uploaded-thumbnail/' + item.destination_thumbnail : '/storage/no-img.webp'}" alt="Photo 1" class="w-full h-full object-cover">
+                                <div class="absolute bottom-0 left-0 right-0 text-white p-4">
+                                     <p class="text-sm font-bold">${item.destination_name}</p>
+                                    <p class="address">${item.destination_city_name + ' | ' + item.destination_province_name}</p>
+                                    <p class="rating">4.2 ⭐⭐⭐</p>
+                                </div>
+                            </div>
+                        </div>`
+                        $('.splide__list').append(newestDestination);
+
+                    });
+                    $('.splide__arrows').hide()
+                    var splide = new Splide('#fslider', {
+                        type: 'slide',
+                        perPage: 5,
+                        gap: '1rem',
+                        pagination: false,
+                        breakpoints: {
+                            1024: {
+                                perPage: 1
+                            }
+                        }
+                    }).mount();
+
+                    function updateProgressBar() {
+                        var currentSlide = splide.index;
+                        var totalSlides = Math.max(splide.length - splide.options.perPage + 1,
+                            1); // Ensure totalSlides is never less than 1
+                        var progressPercentage = (currentSlide + 1) / totalSlides * 100;
+                        $('.progress-bar-fill').css('width', progressPercentage + '%');
+                    }
+
+                    updateProgressBar();
+
+                    splide.on('move', function() {
+                        updateProgressBar();
+                    });
+
+                    $('.splide-prev').on('click', function() {
+                        splide.go('<');
+                    });
+
+                    $('.splide-next').on('click', function() {
+                        splide.go('>');
+                    });
+                })
+                .catch(function(error) {
+                    console.error('Ada masalah dalam mengambil data:', error);
+                });
         }
     </script>
 </body>

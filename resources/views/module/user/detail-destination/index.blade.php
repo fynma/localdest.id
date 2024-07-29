@@ -96,7 +96,7 @@
                                     </button>
                                 </li>
                                 <li class="mr-2 -mb-0.5">
-                                    <button onclick="switchPage('maps-section')"
+                                    <button onclick="switchPage('maps-section')" disabled
                                         class="btn-maps-section inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300">
                                         Maps
                                     </button>

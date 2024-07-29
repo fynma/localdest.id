@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Destination;
 use App\Models\DestinationPhoto;
+use App\Models\History;
 use App\Models\Notification;
 use App\Models\Tags;
 use App\Models\TagsDest;
@@ -14,15 +15,69 @@ use Illuminate\Support\Str;
 
 class DestinationController extends Controller
 {
-  public function index()
+  public function getDestNewest()
   {
-    $data = DB::table('v_detail_destination')->select(['destination_id', 'destination_name', 'destination_thumbnail', 'destination_address', 'destination_city_name', 'destination_province_name', 'destination_city', 'destination_province'])->get();
+    $data = DB::table('v_detail_destination')
+      ->select(['destination_id', 'destination_name', 'destination_thumbnail', 'destination_address', 'destination_city_name', 'destination_province_name', 'destination_city', 'destination_province'])
+      ->orderBy('destination_created_at', 'desc')
+      ->limit(10)
+      ->get();
 
     $data = $data->map(function ($item) {
       $item->destination_city_name = $this->toTitleCase($item->destination_city_name);
       $item->destination_province_name = $this->toTitleCase($item->destination_province_name);
       return $item;
     });
+
+    return response()->json($data);
+  }
+  // public function getDestPopular()
+  // {
+  //   $data = DB::table('v_detail_destination')->select(['destination_id', 'destination_name', 'destination_thumbnail', 'destination_address', 'destination_city_name', 'destination_province_name', 'destination_city', 'destination_province'])->get();
+
+  //   $data = $data->map(function ($item) {
+  //     $item->destination_city_name = $this->toTitleCase($item->destination_city_name);
+  //     $item->destination_province_name = $this->toTitleCase($item->destination_province_name);
+  //     return $item;
+  //   });
+
+  //   return response()->json($data);
+  // }
+  public function index(Request $request)
+  {
+    $query = $request->input('query');
+    // non hashtag cari nama
+    if ($query != null && $query[0] != '#') {
+      $data = DB::table('v_detail_destination')->where('destination_name', 'LIKE', "%{$query}%")->get();
+    }
+    // with hashtag cari tag nya 
+    else if ($query != null && $query[0] == '#') {
+      $query = substr($query, 1);
+      // dd($query);
+      $idDest = DB::table('v_tagofdest')
+        ->where('tag', 'LIKE', "%{$query}%")
+        ->pluck('tags_destinations_id');
+      // dd($idDest);
+      $data = DB::table('v_detail_destination')->whereIn('destination_id', $idDest)->get();
+    } else {
+      $data = DB::table('v_detail_destination')->select(['destination_id', 'destination_name', 'destination_thumbnail', 'destination_address', 'destination_city_name', 'destination_province_name', 'destination_city', 'destination_province'])->get();
+    }
+    $destinationIds = $data->pluck('destination_id')->toArray();
+
+    $tags = DB::table('v_tagofdest')
+      ->whereIn('tags_destinations_id', $destinationIds)
+      ->select(['tags_destinations_id', 'tag'])
+      ->get();
+    $data = $data->map(function ($destination) use ($tags) {
+      $destinationTags = $tags->where('tags_destinations_id', $destination->destination_id)->pluck('tag');
+      $destination->tags = $destinationTags;
+      $destination->destination_city_name = $this->toTitleCase($destination->destination_city_name);
+      $destination->destination_province_name = $this->toTitleCase($destination->destination_province_name);
+      return $destination;
+    });
+
+    // // Fungsi toTitleCase
+    // dd($data);
 
     return response()->json($data);
   }
@@ -44,6 +99,11 @@ class DestinationController extends Controller
   {
     $data['tag'] = DB::table('tags')->select(['tag_id', 'tag'])->get();
     $data['count_tag'] = DB::table('v_count_tags')->get();
+    return response()->json($data);
+  }
+  public function getHistory(Request $request)
+  {
+    $data['history'] = DB::table('histories')->where('history_user_id', session('id'))->orderBy('history_updated_at', 'desc')->limit(10)->get(); 
     return response()->json($data);
   }
   public function getTagDest(Request $request)
@@ -154,5 +214,36 @@ class DestinationController extends Controller
     }
 
     return response()->json(['success' => 'Destination created successfully']);
+  }
+
+  public function saveHistorySearch(Request $request)
+  {
+    $data = $request->post();
+    $userId = session('id');
+
+    if ($userId) {
+      $existingHistory = History::where('history_user_id', $userId)
+        ->where('value', $data['query'])
+        ->first();
+
+      if ($existingHistory) {
+        // Update the existing record
+        $existingHistory->updated_at = now();
+        History::where('history_id', $existingHistory->history_id)->update(['history_updated_at' => now()]);
+      } else {
+        // Create a new record
+        $id_history = Str::random(16);
+        $historyQuery = [
+          'history_id' => $id_history,
+          'history_user_id' => $userId,
+          'value' => $data['query'],
+        ];
+        History::create($historyQuery);
+      }
+
+      return response()->json(['success' => 'History saved successfully']);
+    } else {
+      return response()->json(['error' => 'User not found'], 500);
+    }
   }
 }

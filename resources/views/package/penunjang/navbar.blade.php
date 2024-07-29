@@ -112,17 +112,20 @@
 
         <div class="flex items-center md:order-2 space-x-3 gap-2 md:space-x-0 rtl:space-x-reverse">
 
-           <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
+            <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
                 class="lg:hidden change-color-area text-white bg-transparent text-sm  py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                type="button"><svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                    <path stroke="#ffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                type="button"><svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 17 14">
+                    <path stroke="#ffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 1h15M1 7h15M1 13h15" />
                 </svg>
             </button>
 
             <!-- Dropdown menu -->
             <div id="dropdown"
                 class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                <ul
+                    class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                     <li>
                         <a href="/destination" class="nav-link destination">
                             DESTINATION
@@ -144,8 +147,8 @@
                         </a>
                     </li>
                 </ul>
-            </div> 
-{{-- 
+            </div>
+
             <button type="button" id="toggle-search" aria-controls="navbar-search" aria-expanded="false"
                 class=" text-gray-500 dark:text-gray-400 focus:outline-none dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 ">
                 <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -156,10 +159,13 @@
                 <span class="sr-only">Search</span>
             </button>
             <div id="search-container" class="hidden">
-                <input type="text" id="search-navbar"
-                    class="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Search...">
-            </div> --}}
+                <form action="javascript:searchByNav" name="form-search-nav" id="form-search-nav">
+                    <input type="text" id="search-navbar" name="search-navbar"
+                        class="block w-full p-2  text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Search...">
+                        <button type="submit">cari</button>
+                </form>
+            </div>
             {{-- after login --}}
             @auth
                 <button id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
@@ -194,15 +200,18 @@
                     <ul class="py-2" aria-labelledby="user-menu-button">
                         <li>
                             <a href="/profile"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">My Profile</a>
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">My
+                                Profile</a>
                         </li>
                         <li>
                             <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">My Wishlist</a>
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">My
+                                Wishlist</a>
                         </li>
                         <li>
                             <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">My Comment</a>
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">My
+                                Comment</a>
                         </li>
                         <li>
                             <a onclick="window.location='{{ route('logout') }}'"
@@ -380,6 +389,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
         crossorigin="anonymous"></script>
     <script>
+
         // $('#login-button').on('click', function() {
         //     // Hide the Register Modal
         //     $('#register-modal').addClass('hidden');
@@ -415,6 +425,23 @@
                 }
             });
         });
+        $('#form-search-nav').on('submit', function(event) {
+            // event.preventDefault();
+            searchByNav();
+        });
+
+        function searchByNav() {
+            var query = $('#search-navbar').val();
+            console.log(query);
+
+            var baseUrl =  '{{ getenv('APP_URL') }}' + '/destination?query=' + query + '#destination-show-section';
+            console.log(baseUrl)
+            // history.pushState({}, '', newUrl);
+            window.location.href = baseUrl;
+            // Memanggil fungsi loadPagination dengan query
+            // loadPagination();
+        }
+
         var mode;
         const nav = $('.navbar-full')
         const text_a = $('#navbar-user')
