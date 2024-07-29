@@ -10,6 +10,7 @@ use App\Models\History;
 use App\Models\Notification;
 use App\Models\Tags;
 use App\Models\TagsDest;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
@@ -103,7 +104,7 @@ class DestinationController extends Controller
   }
   public function getHistory(Request $request)
   {
-    $data['history'] = DB::table('histories')->where('history_user_id', session('id'))->orderBy('history_updated_at', 'desc')->limit(10)->get(); 
+    $data['history'] = DB::table('histories')->where('history_user_id', session('id'))->orderBy('history_updated_at', 'desc')->limit(10)->get();
     return response()->json($data);
   }
   public function getTagDest(Request $request)
@@ -154,7 +155,6 @@ class DestinationController extends Controller
         // $thumbnailFile->storeAs('public/uploaded-thumbnail', $newThumbname);
         // $thumbnailFile->storeAs('uploaded-thumbnail', $newThumbname, 'public');
         $thumbnailFile->move(public_path('storage/uploaded-thumbnail/'), $newThumbname);
-
       }
 
       //entry multiple photo
@@ -213,12 +213,19 @@ class DestinationController extends Controller
         }
       }
       DB::commit();
+      return response()->json(['success' => 'Destination created successfully']);
     } catch (\Exception $e) {
       DB::rollBack();
-      return response()->json(['error' => $e->getMessage()], 500);
-    }
 
-    return response()->json(['success' => 'Destination created successfully']);
+      // Log the error for debugging
+      Log::error('Failed to create destination: ' . $e->getMessage());
+
+      // Send a more detailed error message in response
+      return response()->json([
+        'error' => 'Failed to create destination',
+        'message' => $e->getMessage()
+      ], 500);
+    }
   }
 
   public function saveHistorySearch(Request $request)
