@@ -1,7 +1,8 @@
 var quick = {
+    
     getProvince: function(idParam) {
         $.ajax({
-            url: '/api/getProvinsi',
+            url: '/getProvinsi',
             method: 'GET',
             success: function(data) {
                 console.log(data);
@@ -12,18 +13,21 @@ var quick = {
                     };
                 });
     
-                // Add an empty option at the beginning of the provinces array
+                // Tambahkan opsi kosong di awal array provinces
                 provinces.unshift({
                     id: '',
                     text: ''
                 });
     
                 // Populate the select with province data
-                $('#province').select2({
+                $('#' + idParam).select2({
                     placeholder: '--Choose Province--',
                     data: provinces,
                     allowClear: true
                 });
+    
+                // Set default value to empty (so the placeholder is shown)
+                $('#' + idParam).val('').trigger('change');
             },
             error: function(xhr, status, error) {
                 console.error('Failed to fetch provinces:', error);
@@ -34,6 +38,8 @@ var quick = {
             placeholder: '--Choose-- ',
             allowClear: true
         });
+    
+        $('#' + idParam).val('').trigger('change');
     },
     
     

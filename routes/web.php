@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\GlobalController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Middleware\loginCheck;
 
@@ -19,6 +20,7 @@ Route::controller(LoginController::class)->group(function () {
 });
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/getProvinsi', [GlobalController::class, 'getProvinsi']);
 
 Route::get('/', function () {
     return view('landing');
@@ -51,7 +53,7 @@ Route::middleware([loginCheck::class])->group(function () {
         return view('module.user.request-destination.index');
     });
     Route::controller(DestinationController::class)->group(function () {
-        foreach (['create'] as $key => $value) {
+        foreach (['create', 'saveHistorySearch', 'getHistory'] as $key => $value) {
             Route::post('/dest/' . $value, $value);
         }
     });
@@ -62,5 +64,8 @@ Route::middleware([loginCheck::class])->group(function () {
     });
     Route::get('/profile', function () {
         return view('module.user.profile.index');
+    });
+    Route::get('/wishlist', function () {
+        return view('module.user.wishlist.index');
     });
 });

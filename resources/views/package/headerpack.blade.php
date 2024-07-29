@@ -14,6 +14,7 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/css/splide.min.css
     <link href="{!! asset('/storage/assets/css/select2.min.css') !!}" rel="stylesheet" />
     {{-- <link href="{!! asset('/storage/assets/css/searchbar.css') !!}" rel="stylesheet" /> --}}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/42.0.0/ckeditor5.css" />
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>

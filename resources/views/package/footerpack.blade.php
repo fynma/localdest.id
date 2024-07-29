@@ -18,3 +18,4 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/j
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js
 "></script>
 {{-- {!! asset('/storage/assets/css/select2.min.css') !!} --}}
+<script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>

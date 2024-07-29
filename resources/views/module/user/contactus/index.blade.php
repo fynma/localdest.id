@@ -83,7 +83,7 @@
         {{-- inset-0 flex items-center justify-center z-10 w-[513] h-[536px] --}}
         <!-- Content Container on Top of the Map -->
         <div class="absolute ">
-            <div class="bg-figma-blue text-white p-6 md:p-10 max-w-lg w-[513] h-[536px] mx-32">
+            <div class="bg-figma-about-blue text-white p-6 md:p-10 max-w-lg w-[513] h-[536px] mx-32">
                 <h2 class="text-2xl font-bold mb-4">Contact Person</h2>
                 <p class="mb-4">Lorem ipsum dolor sit amet consectetur. Hendrerit mauris sollicitudin.</p>
                 <p class="flex items-center mb-2">
@@ -126,7 +126,7 @@
             </div>
         </div>
     </div>
-
+   
 
 
     @include('package.penunjang.footer')
