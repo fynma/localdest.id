@@ -132,7 +132,7 @@ class DestinationController extends Controller
     // ], [
     //   'inp-longitude.required' => 'Select the Map',
     //   'inp-latitude.required' => 'Select the Map',
-    //   'thumbnail-file.required' => 'Thumbnail is required',
+    //   'thumbnail_file.required' => 'Thumbnail is required',
     //   'city.required' => 'City is required',
     //   'province.required' => 'Province is required',
     //   'tag.required' => 'Tag is required',
@@ -148,7 +148,7 @@ class DestinationController extends Controller
       $data = $request->post();
       $userId = session('id');
       // dd($request->hasFile('thumbnail-file'));
-      if ($request->hasFile('thumbnail_file')) {
+      // if ($request->hasFile('thumbnail_file')) {
         $thumbnailFile = $request->file('thumbnail_file');
         $extension = $thumbnailFile->getClientOriginalExtension();
         $newThumbname = Str::random(15) . '_' . time() . '.' . $extension;
@@ -156,9 +156,9 @@ class DestinationController extends Controller
         // $thumbnailFile->storeAs('public/uploaded-thumbnail', $newThumbname);
         // $thumbnailFile->storeAs('uploaded-thumbnail', $newThumbname, 'public');
         $thumbnailFile->move(public_path('storage/uploaded-thumbnail/'), $newThumbname);
-      } else {
-        return response()->json(['error' => 'Thumbnail is required'], 500);
-      }
+      // } else {
+      //   return response()->json(['error' => 'Thumbnail is required'], 500);
+      // }
 
       //entry multiple photo
       if ($request->hasFile('files')) {
