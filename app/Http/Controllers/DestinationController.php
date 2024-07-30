@@ -155,6 +155,8 @@ class DestinationController extends Controller
         // $thumbnailFile->storeAs('public/uploaded-thumbnail', $newThumbname);
         // $thumbnailFile->storeAs('uploaded-thumbnail', $newThumbname, 'public');
         $thumbnailFile->move(public_path('storage/uploaded-thumbnail/'), $newThumbname);
+      } else {
+        return response()->json(['error' => 'Thumbnail is required'], 500);
       }
 
       //entry multiple photo
