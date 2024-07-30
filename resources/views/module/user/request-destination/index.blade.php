@@ -153,7 +153,7 @@
                                     <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX.
                                         800x400px)</p>
                                 </div>
-                                <input id="dropzone-file" name="thumbnail-file" type="file" class="hidden" />
+                                <input id="dropzone-file" name="thumbnail_file" type="file" class="hidden" />
                             </label>
                         </div>
                     </div>
