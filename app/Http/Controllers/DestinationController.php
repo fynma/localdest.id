@@ -147,8 +147,9 @@ class DestinationController extends Controller
       $id_destination = Str::random(16);
       $data = $request->post();
       $userId = session('id');
-      if ($request->hasFile('thumbnail-file')) {
-        $thumbnailFile = $request->file('thumbnail-file');
+      // dd($request->hasFile('thumbnail-file'));
+      if ($request->hasFile('thumbnail_file')) {
+        $thumbnailFile = $request->file('thumbnail_file');
         $extension = $thumbnailFile->getClientOriginalExtension();
         $newThumbname = Str::random(15) . '_' . time() . '.' . $extension;
         $data['thumbnail_name'] = $newThumbname;
