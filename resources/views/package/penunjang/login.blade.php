@@ -4,13 +4,13 @@
             <label for="email" class="block mb-2 text-sm font-medium ">Email</label>
             <input type="email" name="email" id="email"
                 class="bg-base-100 border border-gray-200  text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                placeholder="Enter your Email" required="">
+                placeholder="Enter your Email" value="rafifnr06@gmail.com" required="">
         </div>
         <div class="col-span-2">
             <label for="password" class="block mb-2 text-sm font-medium ">Password</label>
             <input type="password" name="password" id="password"
                 class="bg-base-100 border border-gray-200  text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                placeholder="Enter your Password" required="">
+                placeholder="Enter your Password" value="kalibolu" required="">
         </div>
     </div>
     <div class="flex justify-center mb-5">
