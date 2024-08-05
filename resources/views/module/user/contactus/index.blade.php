@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="{{session('user_theme') == 1  ? 'dark' : 'light' }}">
 @include('package.headerpack')
 <title>Localdest - Contact Us</title>
 <link rel="icon" type="image/png" href="/storage/vector/logo-localdest.jpg">

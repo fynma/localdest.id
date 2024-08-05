@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="{{session('user_theme') == 1  ? 'dark' : 'light' }}">
 @include('package.headerpack')
 <title>Localdest</title>
 <link rel="icon" type="image/png" href="/storage/vector/logo-localdest.jpg">
@@ -34,7 +34,7 @@
     }
 </style>
 
-<body>
+<body >
     @include('package.penunjang.navbar')
     <section id="hero-section" class="relative">
         <video id="video" class="w-screen h-screen object-cover video-first" autoplay muted loop>
@@ -336,10 +336,10 @@
     </div>
 
     {{-- full size --}}
-    <div class="bg-gray-50">
+    <div class="background-gray-responsive">
         <div class="category-explore-section mt-20 container mx-auto py-20">
-            <div class="text-black mr-20 text-4xl">
-                <h1 class="font-poppins font-bold leading-relaxed">
+            <div class="mr-20 text-4xl">
+                <h1 class="font-poppins font-bold leading-relaxed ">
                     Explore the World's Best Travel <br> Destinations by Category
                 </h1>
             </div>

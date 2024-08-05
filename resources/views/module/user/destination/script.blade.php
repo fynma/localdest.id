@@ -110,6 +110,10 @@
         $('.loading-spinner-pagin').show()
         const urlParams = new URLSearchParams(window.location.search);
         query = urlParams.get('query');
+        if (query != null && query != '') {
+            $('#search-bar').val(query);
+            $('#search-navbar').val(query);
+        }
         province = urlParams.get('province');
         category = urlParams.get('category');
         rate = urlParams.get('rate');
@@ -259,7 +263,7 @@
     //searchbar 
     const searchInput = $('#search-bar');
     const tagsContainer = $(
-            `<div class="bg-white border w-100 absolute container mx-auto p-4 pt-2 mt-2 z-10" style="display: none;"></div>`
+            `<div class="search-background border w-100 absolute container mx-auto p-4 pt-2 mt-2 z-10" style="display: none;"></div>`
         )
         .insertAfter(searchInput);
 

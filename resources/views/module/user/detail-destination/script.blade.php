@@ -22,7 +22,7 @@
     }
 
     function unblockLoading() {
-        $('.loading').fadeOut(300);
+        $('.loading-view').fadeOut(300);
         $('.parent').fadeIn();
     }
 
@@ -151,20 +151,20 @@
                             'Tidak dapat menampilkan alamat';
 
                         var placeDiv = $(`
-                        <article class="cursor-pointer" onclick="window.location.href='https://www.google.com/maps/search/?api=1&query=${place.lat},${place.lon}'" target="_blank">
+                        <article class="cursor-pointer " onclick="window.location.href='https://www.google.com/maps/search/?api=1&query=${place.lat},${place.lon}'" target="_blank">
                             <div class="flex mb-4">
                                 <img class="w-24 h-24 me-4 rounded-lg object-cover" src="/storage/hotel.png" alt="">
-                                <div class="font-medium dark:text-white">
+                                <div class="font-medium ">
                                     <p class="">${name}</p>
                                     <div class="flex items-center mt-2 space-x-1 rtl:space-x-reverse">
                                         <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20"><path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/></svg>
                                         <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20"><path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/></svg>
                                         <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20"><path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/></svg>
                                         <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20"><path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/></svg>
-                                        <svg class="w-4 h-4 text-gray-300 dark:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20"><path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/></svg>
-                                        <span class="ms-2 me-2 font-normal dark:text-white mx-4 border-r-2 px-2">4.8</span>
-                                        <span class="ms-2 font-normal dark:text-white mx-4 border-r-2 px-2">${place.tags.amenity ?? 'Hotel'}</span>
-                                        <span class="ms-4 font-normal dark:text-white mx-4 ">${distance}m</span>
+                                        <svg class="w-4 h-4 text-gray-300 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20"><path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/></svg>
+                                        <span class="ms-2 me-2 font-normal mx-4 border-r-2 px-2">4.8</span>
+                                        <span class="ms-2 font-normal mx-4 border-r-2 px-2">${place.tags.amenity ?? 'Hotel'}</span>
+                                        <span class="ms-4 font-normal mx-4 ">${distance}m</span>
                                     </div>
                                     <p class="font-normal mt-2"> ${address}</p>
                                 </div>
@@ -267,11 +267,11 @@
     //                             alt="">
 
     //                         {{-- <span class="w-10 h-10 me-4 rounded-full bg-figma-btn-blue text-center">S</span> --}}
-    //                         <div class="font-medium dark:text-white">
+    //                         <div class="font-medium">
     //                             <p>${review.name}
     //                             <div class="flex items-center mb-1 space-x-1 rtl:space-x-reverse">
     //                                 ${ratingStar}
-    //                                 <span class="ms-2 text-sm font-normal text-gray-400 dark:text-white">|
+    //                                 <span class="ms-2 text-sm font-normal text-gray-400">|
     //                                 ${quick.convertDateEng(review.review_created_at)}</span>
     //                             </div>
     //                             </p>
@@ -294,11 +294,11 @@
     //                                                 alt="">
 
     //                                             {{-- <span class="w-10 h-10 me-4 rounded-full bg-figma-btn-blue text-center">S</span> --}}
-    //                                             <div class="font-medium dark:text-white">
+    //                                             <div class="font-medium">
     //                                                 <p>${review.name}
     //                                                 <div class="flex items-center mb-1 space-x-1 rtl:space-x-reverse">
     //                                                    ${ratingStar}
-    //                                                     <span class="ms-2 text-sm font-normal text-gray-400 dark:text-white">|
+    //                                                     <span class="ms-2 text-sm font-normal text-gray-400">|
     //                                                         ${quick.convertDateEng(review.review_created_at)}</span>
     //                                                 </div>
     //                                                 </p>
@@ -357,12 +357,12 @@
                         <article>
                             <div class="flex justify-between items-center mb-2">
                             <div class="flex items-center mb-4">
-                                <img class="w-10 h-10 me-4 rounded-full object-cover" src="/storage/photo-profile/orangilang.jpg" alt="">
-                                <div class="font-medium dark:text-white">
+                                <img class="w-10 h-10 me-4 rounded-full object-cover" src="/storage/photo-profile/${review.photo ?? 'blank.webp'}" alt="">
+                                <div class="font-medium">
                                     <p>${review.name}
                                     <div class="flex items-center mb-1 space-x-1 rtl:space-x-reverse">
                                         ${ratingStar}
-                                        <span class="ms-2 text-sm font-normal text-gray-400 dark:text-white">| ${quick.convertDateEng(review.review_created_at)}</span>
+                                        <span class="ms-2 text-sm font-normal text-gray-400">| ${quick.convertDateEng(review.review_created_at)}</span>
                                     </div>
                                     </p>
                                 </div>
@@ -377,8 +377,8 @@
                                 </button>
                                 <!-- Dropdown menu -->
                                 <div id="dropdownComment1"
-                                    class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                                    <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                                    class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow">
+                                    <ul class="py-1 text-sm text-gray-700"
                                         aria-labelledby="dropdownMenuIconHorizontalButton">
                                         <li>
                                             <a href="#"
@@ -571,7 +571,7 @@
                 console.log(response)
                 var tag_template = ``;
                 $.each(response.data, function(index, data) {
-                    tag_template = ` <a href="" class="bg-gray-200 p-2 rounded">${data.tag}</a>`
+                    tag_template = ` <a href="" class="bg-base-200 p-2 rounded">${data.tag}</a>`
                     $('.tag-sect').append(tag_template);
 
                 });
@@ -584,16 +584,19 @@
 
     function setShareBtn() {
         const shareUrl = $(location).attr('href');
-        var facebookBase = 'https://www.facebook.com/sharer/sharer.php?u=';
-        var twitterBase = 'https://twitter.com/intent/tweet?url=';
-        var instagramBase = 'https://www.instagram.com/?url=';
-        var whatsappBase = 'https://wa.me/?text=';
+        const shareText = "Aku menemukan tempat wisata bagus dan rekomended! Cek di sini: ";
 
-        $('.facebook').attr('href', facebookBase + shareUrl);
-        $('.twitter').attr('href', twitterBase + shareUrl);
-        $('.instagram').attr('href', instagramBase + shareUrl);
-        $('.whatsapp').attr('href', whatsappBase + shareUrl);
+        const facebookBase = 'https://www.facebook.com/sharer/sharer.php?u=';
+        const twitterBase = 'https://twitter.com/intent/tweet?text=';
+        const instagramBase = 'https://www.instagram.com/?url=';
+        const whatsappBase = 'https://wa.me/?text=';
+
+        $('.facebook').attr('href', facebookBase + encodeURIComponent(shareUrl));
+        $('.twitter').attr('href', twitterBase + encodeURIComponent(shareText + shareUrl));
+        $('.instagram').attr('href', instagramBase + encodeURIComponent(shareUrl));
+        $('.whatsapp').attr('href', whatsappBase + encodeURIComponent(shareText + shareUrl));
     }
+
 
     function checkExistingReview() {
         const urlParams = new URLSearchParams(window.location.search);

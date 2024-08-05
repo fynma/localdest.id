@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="{{session('user_theme') == 1  ? 'dark' : 'light' }}">
 
 <head>
     @include('package.headerpack')
