@@ -8,7 +8,9 @@ use App\Models\User;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
+use Exception;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
 {
@@ -31,7 +33,9 @@ class LoginController extends Controller
             session(['user' => $user]);
             session(['id' => $user->id]);
             session(['user_role' => $user->role]);
-
+            session(['user_photo' => $user->photo]);
+            session(['user_theme' => $user->theme]);
+            // session(['user_name' => $user->name]);
             $request->session()->regenerate();
 
             return response()->json([
@@ -44,6 +48,51 @@ class LoginController extends Controller
                 'success' => false,
                 'message' => 'Invalid email or password.'
             ], 422);
+        }
+    }
+    public function handleGoogleCallback(Request $request)
+    {
+        try {
+            $user = Socialite::driver('google')->user();
+            $finduser = User::where('email', $user->email)->first();
+
+            if ($finduser) {
+                $finduser->update(['google_id' => $user->id]);
+
+                $user = User::where('email', $request->email)->firstOrFail();
+                session(['user' => $user]);
+                session(['id' => $user->id]);
+                session(['user_role' => $user->role]);
+                session(['user_photo' => $user->photo]);
+                session(['user_theme' => $user->theme]);
+                // session(['user_name' => $user->name]);
+                $request->session()->regenerate();
+
+                return redirect()->route('index');
+            } else {
+                $id = rand();
+                $newUser = User::create([
+                    'id' => $id,
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'google_id' => $user->id,
+                    'role' => 2,
+                    'password' => 0,
+                ]);
+
+                session(['user' => $user]);
+                session(['id' => $id]);
+                session(['user_role' => $user->role]);
+                session(['user_photo' => $user->photo]);
+                session(['user_theme' => $user->theme]);
+                // session(['user_name' => $user->name]);
+                $request->session()->regenerate();
+
+
+                return redirect()->route('index');
+            }
+        } catch (Exception $e) {
+            dd($e->getMessage());
         }
     }
     public function logout()

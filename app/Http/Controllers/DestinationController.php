@@ -13,6 +13,7 @@ use App\Models\TagsDest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class DestinationController extends Controller
 {
@@ -116,31 +117,31 @@ class DestinationController extends Controller
   public function create(Request $request)
   {
     // dd($request->post());
-    // $request->validate([
-    //   'title-destination' => 'required|string|max:255',
-    //   'description' => 'required|string',
-    //   'address' => 'required|string|max:255',
-    //   'inp-longitude' => 'required|numeric',
-    //   'inp-latitude' => 'required|numeric',
-    //   'thumbnail-file' => 'required',
-    //   'files' => 'required',
-    //   // 'files.*' => 'file',
-    //   'city' => 'required|string|max:255',
-    //   'province' => 'required|string|max:255',
-    //   'tag' => 'required|array',
-    //   'tag.*' => 'string|max:255',
-    // ], [
-    //   'inp-longitude.required' => 'Select the Map',
-    //   'inp-latitude.required' => 'Select the Map',
-    //   'thumbnail_file.required' => 'Thumbnail is required',
-    //   'city.required' => 'City is required',
-    //   'province.required' => 'Province is required',
-    //   'tag.required' => 'Tag is required',
-    //   'files.required' => 'Photo is required',
-    //   'address.required' => 'Address is required',
-    //   'description.required' => 'Description is required',
-    //   'title-destination.required' => 'Title is required',
-    // ]);;
+    $request->validate([
+      'title-destination' => 'required|string|max:255',
+      'description' => 'required|string',
+      'address' => 'required|string|max:255',
+      'inp-longitude' => 'required|numeric',
+      'inp-latitude' => 'required|numeric',
+      'thumbnail-file' => 'required',
+      'files' => 'required',
+      // 'files.*' => 'file',
+      'city' => 'required|string|max:255',
+      'province' => 'required|string|max:255',
+      'tag' => 'required|array',
+      'tag.*' => 'string|max:255',
+    ], [
+      'inp-longitude.required' => 'Select the Map',
+      'inp-latitude.required' => 'Select the Map',
+      'thumbnail_file.required' => 'Thumbnail is required',
+      'city.required' => 'City is required',
+      'province.required' => 'Province is required',
+      'tag.required' => 'Tag is required',
+      'files.required' => 'Photo is required',
+      'address.required' => 'Address is required',
+      'description.required' => 'Description is required',
+      'title-destination.required' => 'Title is required',
+    ]);
     DB::beginTransaction();
     try {
 
@@ -149,13 +150,13 @@ class DestinationController extends Controller
       $userId = session('id');
       // dd($request->hasFile('thumbnail-file'));
       // if ($request->hasFile('thumbnail_file')) {
-        $thumbnailFile = $request->file('thumbnail_file');
-        $extension = $thumbnailFile->getClientOriginalExtension();
-        $newThumbname = Str::random(15) . '_' . time() . '.' . $extension;
-        $data['thumbnail_name'] = $newThumbname;
-        // $thumbnailFile->storeAs('public/uploaded-thumbnail', $newThumbname);
-        // $thumbnailFile->storeAs('uploaded-thumbnail', $newThumbname, 'public');
-        $thumbnailFile->move(public_path('storage/uploaded-thumbnail/'), $newThumbname);
+      $thumbnailFile = $request->file('thumbnail_file');
+      $extension = $thumbnailFile->getClientOriginalExtension();
+      $newThumbname = Str::random(15) . '_' . time() . '.' . $extension;
+      $data['thumbnail_name'] = $newThumbname;
+      // $thumbnailFile->storeAs('public/uploaded-thumbnail', $newThumbname);
+      // $thumbnailFile->storeAs('uploaded-thumbnail', $newThumbname, 'public');
+      $thumbnailFile->move(public_path('storage/uploaded-thumbnail/'), $newThumbname);
       // } else {
       //   return response()->json(['error' => 'Thumbnail is required'], 500);
       // }
@@ -191,7 +192,7 @@ class DestinationController extends Controller
         'destination_longitude' => $data['inp-longitude'],
         'destination_latitude' => $data['inp-latitude'],
         'destination_thumbnail' => $data['thumbnail_name'],
-        'destination_active' => 0,
+        'destination_active' => 1, //ubah 0 ketika admin sudah jadi 
         'destination_user_id' => $userId,
         'destination_city' => $data['city'],
         'destination_province' => $data['province'],

@@ -1,42 +1,11 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="{{session('user_theme') == 1  ? 'dark' : 'light' }}">
-@include('package.headerpack')
-<title>Localdest - Destination</title>
-<link rel="icon" type="image/png" href="/storage/vector/logo-localdest.jpg">
-<style>
-    /* .splide__slide img {
-        width: 100%;
-        height: auto;
-    } */
-    .splide__pagination {
-        display: none
-    }
-
-    .splide__arrow {
-        display: none
-    }
-</style>
-<script>
-    mode = 'light' // set 'light' untuk perubahan warna dasar navbar
-</script>
-
-<body>
-    @include('package.penunjang.navbar')
-
-    <div class="container mx-auto py-20">
+    <div class="">
         <div class=" mr-20 text-4xl mt-10">
             <h1 class="font-poppins font-bold leading-relaxed">
-                Add a New Destination For Us </h1>
-        </div>
-        <div class="p-sec mt-5">
-            <p>
-                Lorem ipsum dolor sit amet consectetur. Arcu arcu eget auctor auctor parturient ac quisque ultrices. In
-                molestie arcu turpis luctus tortor et.
-            </p>
+                Editing Mode</h1>
         </div>
         <div class="flex justify-between gap-5">
-            <form class="request-destination-form mt-10 w-4/6" name="form-request" method="POST"
-                action="javascript:createDest()" enctype="multipart/form-data">
+            <form class="user-destination-form mt-10 w-4/6" name="form-update" method="POST"
+                action="javascript:updateDest()" enctype="multipart/form-data">
 
                 @csrf
                 <input type="hidden" name="inp-latitude" id="inp-latitude">
@@ -295,10 +264,14 @@
                 </div>
                 </div>
                 <button type="submit" id="create-dest-button"
-                    class="text-white inline-flex items-center justify-center hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    class="text-white inline-flex items-center justify-center hover:bg-blue-800 font-medium text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     style="background-color: #0B76BC;">
-                    Apply New Destination
+                    Apply Change
                 </button>
+                <button type="button" onclick="switchPost()"
+                class="bg-base-200 inline-flex items-center justify-center font-medium text-sm px-5 py-2.5 text-center">
+                Cancel
+            </button>
             </form>
 
             <div class="mt-10 w-2/6 ">
@@ -333,14 +306,6 @@
         </div>
     </div>   --}}
 
-    @include('package.penunjang.footer')
-    @include('module.user.request-destination.script')
 
 
 
-
-    @include('package.footerpack')
-
-</body>
-
-</html>

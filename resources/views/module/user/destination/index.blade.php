@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="{{session('user_theme') == 1  ? 'dark' : 'light' }}">
 @include('package.headerpack')
 <title>Localdest - Destination</title>
 <link rel="icon" type="image/png" href="/storage/vector/logo-localdest.jpg">
@@ -46,7 +46,7 @@
 
     <div class="container mx-auto p-4">
         <div class="explore-section mt-20">
-            <div class="text-black lg:mr-20 text-4xl">
+            <div class="lg:mr-20 text-4xl">
                 <h1 class="font-poppins text-center lg:text-left font-bold leading-relaxed">
                     Discover the Newest Travel Destinations
                 </h1>
@@ -103,7 +103,7 @@
         </div>
         <div class="request-section mt-20">
             <div
-                class="lg:flex items-center justify-between w-full h-50 lg:h-40 bg-gradient-to-r from-figma-grad-blue to-figma-grad-toblueend border border-gray-200 rounded-lg shadow dark:from-gray-800 dark:to-gray-700 p-4">
+                class="lg:flex items-center justify-between w-full h-50 lg:h-40 bg-gradient-to-r from-figma-grad-blue to-figma-grad-toblueend rounded-lg shadow  p-4">
                 <div class="text-center lg:text-left flex flex-col lg:ml-5 ">
                     <bold class="text-white font-bold mb-2 text-2xl">Want to add a new destination for us?</bold>
                     <p class="text-white text-lg font-thin">Let's add your destination ideas for us here</p>
@@ -111,12 +111,12 @@
                 <div class="button-only flex items-center justify-center mt-2 md:mt-5 lg:mt-0">
                     @auth
                         <button onclick="window.location='/request-destination'"
-                            class="text-blue-600 bg-white px-4 py-2 rounded-full me-5">Request Destination</button>
+                            class="btn-white text-blue-600 px-4 py-2 rounded-full me-5">Request Destination</button>
                     @else
                         <button data-popover-target="login-alert-popover" type="disabled"
-                            class="text-blue-600 bg-white px-4 py-2 rounded-full me-5">Request Destination</button>
+                            class="btn-white text-blue-600 px-4 py-2 rounded-full me-5">Request Destination</button>
                         <div data-popover id="login-alert-popover" role="tooltip"
-                            class="absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                            class="absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
                             <div
                                 class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
                                 <h3 class="font-semibold text-gray-900 dark:text-white">Attention Required</h3>
@@ -132,7 +132,7 @@
                 </div>
             </div>
             <div class="findbest-section mt-20" id="destination-show-section">
-                <div class="text-black lg:mr-20 text-4xl">
+                <div class="lg:mr-20 text-4xl">
                     <h1 class="text-center font-poppins font-bold leading-relaxed lg:text-left">
                         Discover Your Perfect Holiday Destination
                     </h1>
@@ -147,13 +147,12 @@
                     </p>
                 </div>
                 <div class="md:flex md:gap-2 justify-between mt-10">
-                    <h6
-                        class="text-center text-xl font-bold text-gray-900 md:hidden lg:hidden lg:text-left dark:text-white">
+                    <h6 class="text-center text-xl font-bold md:hidden lg:hidden lg:text-left dark:text-white">
                         Filter
                     </h6>
                     {{-- <div id="filter"
                         class="flex gap-10 justify-between md:block lg:block md:w-56 lg:w-56 lg:p-3 dark:bg-gray-700 lg:mt-5 md:border-r lg:border-r border-gray-200">
-                        <h6 class="hidden mb-3 text-xl md:block lg:block font-bold text-gray-900 dark:text-white">
+                        <h6 class="hidden mb-3 text-xl md:block lg:block font-bold dark:text-white">
                             Filter
                         </h6>
                         <div class="category mt-10">
@@ -163,7 +162,7 @@
                                     <input id="apple" type="checkbox" value=""
                                         class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
 
-                                    <label for="apple" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
+                                    <label for="apple" class="ml-2 text-sm font-medium dark:text-gray-100">
                                         Mountain
                                     </label>
                                 </li>
@@ -172,7 +171,7 @@
                                     <input id="fitbit" type="checkbox" value=""
                                         class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
 
-                                    <label for="fitbit" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
+                                    <label for="fitbit" class="ml-2 text-sm font-medium dark:text-gray-100">
                                         Beach
                                     </label>
                                 </li>
@@ -181,7 +180,7 @@
                                     <input id="dell" type="checkbox" value=""
                                         class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
 
-                                    <label for="dell" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
+                                    <label for="dell" class="ml-2 text-sm font-medium dark:text-gray-100">
                                         Waterfall
                                     </label>
                                 </li>
@@ -191,7 +190,7 @@
                                         class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
 
                                     <label for="asus"
-                                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
+                                        class="ml-2 text-sm font-medium dark:text-gray-100">
                                         Other
                                     </label>
                                 </li>
@@ -205,7 +204,7 @@
                                         class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
 
                                     <label for="apple"
-                                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
+                                        class="ml-2 text-sm font-medium dark:text-gray-100">
                                         Jawa Timur
                                     </label>
                                 </li>
@@ -215,7 +214,7 @@
                                         class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
 
                                     <label for="fitbit"
-                                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
+                                        class="ml-2 text-sm font-medium dark:text-gray-100">
                                         Jawa Tengah
                                     </label>
                                 </li>
@@ -225,7 +224,7 @@
                                         class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
 
                                     <label for="dell"
-                                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
+                                        class="ml-2 text-sm font-medium dark:text-gray-100">
                                         Jawa Barat
                                     </label>
                                 </li>
@@ -239,7 +238,7 @@
                                         class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
 
                                     <label for="apple"
-                                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
+                                        class="ml-2 text-sm font-medium dark:text-gray-100">
                                         ⭐⭐⭐⭐ (56)
                                     </label>
                                 </li>
@@ -250,7 +249,7 @@
 
 
                                     <label for="fitbit"
-                                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
+                                        class="ml-2 text-sm font-medium dark:text-gray-100">
                                         ⭐⭐⭐ (56)
                                     </label>
                                 </li>
@@ -261,7 +260,7 @@
 
 
                                     <label for="dell"
-                                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
+                                        class="ml-2 text-sm font-medium dark:text-gray-100">
                                         ⭐⭐ (56)
                                     </label>
                                 </li>
@@ -272,7 +271,7 @@
 
 
                                     <label for="asus"
-                                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
+                                        class="ml-2 text-sm font-medium dark:text-gray-100">
                                         ⭐ (97)
                                     </label>
                                 </li>
@@ -301,7 +300,7 @@
                                             <div class="input-container mb-5">
                                                 <form class="max-w-md mx-auto">
                                                     <label for="default-search"
-                                                        class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                                                        class="mb-2 text-sm font-medium sr-only dark:text-white">Search</label>
                                                     <div class="relative">
                                                         <div
                                                             class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -314,9 +313,9 @@
                                                             </svg>
                                                         </div>
                                                         <input type="text" id="search-bar" autocomplete="off"
-                                                            class="block w-full pl-10 pr-4 py-2 text-sm text-gray-900 bg-white border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
+                                                            class="block w-full pl-10 pr-4 py-2 text-sm border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-blue-500 "
                                                             placeholder="Search Destination..." />
-                                                        <div class="hidden bg-white border w-100 absolute container mx-auto p-4 pt-2 mt-2 z-10"
+                                                        <div class="hidden border w-100 absolute container mx-auto p-4 pt-2 mt-2 z-10"
                                                             style="">
                                                             <div class="last-search mb-5">
                                                                 <span class="">Last Search</span>
@@ -355,16 +354,44 @@
 
                                             </div>
                                         </div>
-                                        <button id="dropdownDefaultButton" data-dropdown-toggle="filter-wisata"
+                                        <div class="dropdown dropdown-end">
+                                            <div tabindex="0" role="button" class="btn ms-2">Filter</div>
+                                            <ul tabindex="0"
+                                                class="dropdown-content menu bg-base-100 z-[1] w-52 shadow">
+                                                <li><a>Item 1</a></li>
+                                                <li> <select name="province-filter" id="province-filter"
+                                                        class=" text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                                        <option value="" disabled>--Choose--</option>
+                                                    </select></li>
+                                                <li> <select name="category-filter" id="category-filter"
+                                                        class=" text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                                        <option value="1">Mountain</option>
+                                                        <option value="2">Beach</option>
+                                                        <option value="3">Waterfall</option>
+                                                        <option value="4">Other</option>
+                                                    </select></li>
+                                                <li>
+                                                    <select name="star-filter" id="star-filter"
+                                                        class=" text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                                        <option value="1">⭐</option>
+                                                        <option value="2">⭐⭐</option>
+                                                        <option value="3">⭐⭐⭐</option>
+                                                        <option value="4">⭐⭐⭐⭐</option>
+                                                        <option value="5">⭐⭐⭐⭐⭐</option>
+                                                    </select>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        {{-- <button id="dropdownDefaultButton" data-dropdown-toggle="filter-wisata"
                                             class="font-medium rounded-lg text-sm px-5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                             type="button">Filter<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true"
                                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                                 <path stroke="currentColor" stroke-linecap="round"
                                                     stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                                             </svg>
-                                        </button>
+                                        </button> --}}
                                         <div id="filter-wisata"
-                                            class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-64	 dark:bg-gray-700">
+                                            class="z-10 hidden divide-y divide-gray-100 rounded-lg shadow w-64	 dark:bg-gray-700">
                                             {{-- <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                                               <li>
                                                 <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
@@ -380,20 +407,20 @@
                                               </li>
                                             </ul> --}}
                                             <div class="">
-                                                <div class="py-2 p-2 bg-white rounded-lg flex flex-col gap-4">
+                                                <div class="py-2 p-2 rounded-lg flex flex-col gap-4">
                                                     <select name="province-filter" id="province-filter"
-                                                        class=" bg-white text-gray-900 text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                                        class=" text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                                         <option value="" disabled>--Choose--</option>
                                                     </select>
                                                     <select name="category-filter" id="category-filter"
-                                                        class=" bg-white text-gray-900 text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                                        class=" text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                                         <option value="1">Mountain</option>
                                                         <option value="2">Beach</option>
                                                         <option value="3">Waterfall</option>
                                                         <option value="4">Other</option>
                                                     </select>
                                                     <select name="star-filter" id="star-filter"
-                                                        class=" bg-white text-gray-900 text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                                        class=" text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                                         <option value="1">⭐</option>
                                                         <option value="2">⭐⭐</option>
                                                         <option value="3">⭐⭐⭐</option>
@@ -407,18 +434,18 @@
                                 </div>
                                 {{-- <div class="flex gap-2">
                                     <select name="province-filter" id="province-filter"
-                                        class=" bg-white border border-gray-200 text-gray-900 text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                        class=" border border-gray-200 text-gray-900 text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                         <option value="" disabled>--Choose--</option>
                                     </select>
                                     <select name="category-filter" id="category-filter"
-                                        class=" bg-white border border-gray-200 text-gray-900 text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                        class=" border border-gray-200 text-gray-900 text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                         <option value="1">Mountain</option>
                                         <option value="2">Beach</option>
                                         <option value="3">Waterfall</option>
                                         <option value="4">Other</option>
                                     </select>
                                     <select name="star-filter" id="star-filter"
-                                        class=" bg-white border border-gray-200 text-gray-900 text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                        class=" border border-gray-200 text-gray-900 text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                         <option value="1">⭐</option>
                                         <option value="2">⭐⭐</option>
                                         <option value="3">⭐⭐⭐</option>
@@ -443,7 +470,7 @@
                                         </div>
                                         <span class="ms-2">Loading Content</span>
                                     </div>
-                                    {{-- <div class='flex space-x-2 justify-center items-center bg-white h-48 dark:invert'>
+                                    {{-- <div class='flex space-x-2 justify-center items-center h-48 dark:invert'>
                                         <span class='sr-only'>Loading...</span>
                                          <div class='h-4 w-4 bg-black rounded-full animate-bounce [animation-delay:-0.2s]'></div>
                                        <div class='h-4 w-4 bg-black rounded-full animate-bounce [animation-delay:-0.10s]'></div>

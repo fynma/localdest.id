@@ -1,15 +1,15 @@
 <form class="p-4 login-form md:p-5" name="form-login" method="POST" action="javascript:signin()">
     <div class="grid gap-4 mb-4 grid-cols-2">
         <div class="col-span-2">
-            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+            <label for="email" class="block mb-2 text-sm font-medium ">Email</label>
             <input type="email" name="email" id="email"
-                class="bg-white border border-gray-200 text-gray-900 text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                class="bg-base-100 border border-gray-200  text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                 placeholder="Enter your Email" required="">
         </div>
         <div class="col-span-2">
-            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+            <label for="password" class="block mb-2 text-sm font-medium ">Password</label>
             <input type="password" name="password" id="password"
-                class="bg-white border border-gray-200 text-gray-900 text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                class="bg-base-100 border border-gray-200  text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                 placeholder="Enter your Password" required="">
         </div>
     </div>
@@ -23,13 +23,13 @@
 
     <div class="flex items-center justify-center mb-5">
         <div class="border-t border-gray-300 w-full"></div>
-        <span class="px-3 text-sm font-thin text-gray-400 dark:text-gray-400">Or</span>
+        <span class="px-3 text-sm font-thin text-gray-400">Or</span>
         <div class="border-t border-gray-300 w-full"></div>
     </div>
 
     <div class="flex justify-center mb-5">
-        <button type="button"
-            class="text-gray-900 inline-flex items-center justify-center bg-gray-100 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium text-sm px-5 py-2.5 text-center w-1/2 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">
+        <button type="button" onclick="window.location='/authorized/google'"
+            class=" inline-flex items-center justify-center bg-base-200 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium text-sm px-5 py-2.5 text-center w-1/2">
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" class="mr-2"
                 viewBox="0 0 48 48">
                 <path fill="#FFC107"
@@ -49,7 +49,7 @@
         </button>
     </div>
     <div class="flex justify-center mb-5">
-        <p class="text-sm dark:text-gray-400">If you don't have an account yet, <button type="button"
+        <p class="text-sm">If you don't have an account yet, <button type="button"
                 onclick="switchFormRegister(this)"
                 class="text-blue-600 dark:text-blue-500 hover:underline">Register</button> now.
         </p>

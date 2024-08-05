@@ -5,8 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\GlobalController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Middleware\loginCheck;
+use Laravel\Socialite\Facades\Socialite;
 
 Route::controller(RegisterController::class)->group(function () {
     foreach (['register'] as $key => $value) {
@@ -47,6 +49,13 @@ Route::controller(ReviewController::class)->group(function () {
         Route::post('/review/' . $value, $value);
     }
 });
+//google auth
+Route::get('authorized/google', function () {
+    return Socialite::driver('google')->redirect();
+});
+
+Route::get('authorized/google/callback', [LoginController::class, 'handleGoogleCallback']);
+
 //route untuk controller maupun view yg restricted/ auth required di place d bawah situ ye
 Route::middleware([loginCheck::class])->group(function () {
     Route::get('/request-destination', function () {
@@ -62,10 +71,18 @@ Route::middleware([loginCheck::class])->group(function () {
             Route::post('/review/' . $value, $value);
         }
     });
+    Route::controller(ProfileController::class)->group(function () {
+        foreach (['index', 'save', 'getUserDestinations', 'getWishlist', 'themePost'] as $key => $value) {
+            Route::post('/profile/' . $value, $value);
+        }
+    });
     Route::get('/profile', function () {
         return view('module.user.profile.index');
     });
     Route::get('/wishlist', function () {
         return view('module.user.wishlist.index');
+    });
+    Route::get('/list-destination', function () {
+        return view('module.user.user-destination.index');
     });
 });

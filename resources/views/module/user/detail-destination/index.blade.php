@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="{{session('user_theme') == 1  ? 'dark' : 'light' }}">
 @include('package.headerpack')
 <title>Localdest - Detail Destination</title>
 <link rel="icon" type="image/png" href="/storage/vector/logo-localdest.jpg">
@@ -15,13 +15,10 @@
 
 <body class="">
 
-    <div class="loading">
+    <div class="loading-view ">
         <div class="flex items-center justify-center h-screen">
             <div class="relative">
-                <div class="h-24 w-24 rounded-full border-t-8 border-b-8 border-gray-200"></div>
-                <div
-                    class="absolute top-0 left-0 h-24 w-24 rounded-full border-t-8 border-b-8 border-blue-500 animate-spin">
-                </div>
+               <div class="loading  loading-dots loading-lg"></div>
             </div>
         </div>
 
@@ -80,9 +77,17 @@
                     <div class="card-section w-3/4">
 
                         {{-- tabs sect --}}
-                        <div class="tabs-sect mb-10">
+                        <div class="tabs-sect2 mb-10">
+                            <div role="tablist" class="tabs tabs tabs-bordered">
+                                <button onclick="switchPage('detail-destination')" role="tab" class="tab btn-detail-destination  tab-active">Detail Destination</button>
+                                <button role="tab" onclick="switchPage('review-section')" class="tab btn-review-section">Reviews</button>
+                                <button role="tab" onclick="switchPage('maps-section')" class="tab btn-maps-section">Maps</button>
+                                <button role="tab" onclick="switchPage('nearby-section')" class="tab btn-nearby-section">Nearby Restaurants & Hotels</button>
+                              </div>
+                        </div>
+                        <div class="tabs-sect mb-10 hidden">
                             <ul
-                                class="flex flex-wrap text-sm font-medium text-center text-gray-500 w-full border-b-2 border-gray-200 dark:border-gray-700 dark:text-gray-400">
+                                class="flex flex-wrap text-sm font-medium text-center text-gray-500 w-full border-b-2 border-gray-200">
                                 <li class="mr-2 -mb-0.5">
                                     <button onclick="switchPage('detail-destination')" aria-current="page"
                                         class="btn-detail-destination inline-block p-4 border-b-2 border-blue-500 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:bg-gray-800 dark:text-blue-500">
@@ -181,7 +186,7 @@
 
                         </div>
                         {{-- Reviews Section --}}
-                        <div class="review-section mt-5" style="display: none">
+                        <div class="review-section mt-5 hidden">
                             @include('module.user.detail-destination.review')
                         </div>
                         <div class="maps-section mt-5 hidden">
@@ -255,7 +260,7 @@
                             </article>
                         </div>
                     </div>
-                    <div id="share" class="ml-5 p-3 dark:bg-gray-700 rounded-lg">
+                    <div id="share" class="ml-5 p-3 rounded-lg bg-base-100">
                         <p class="font-semibold mb-5">Share with friends</p>
                         <div class="flex justify-start gap-2 mb-5">
                             <a href="#"
@@ -283,7 +288,7 @@
                         <a href="" class="bg-gray-200 p-2 rounded">Malang</a>
                         <a href="" class="bg-gray-200 p-2 rounded">Bululawang</a> --}}
                         </div>
-                        <div class="create-section flex flex-col bg-gray-200 rounded justify-center items-center p-4">
+                        <div class="create-section flex flex-col bg-base-200 rounded justify-center items-center p-4">
                             <h1 class="font-bold text-center text-lg mb-5">Start creating your wishlist<br> destination
                             </h1>
                             <p class="text-center mb-5">Start creating your wishlist<br> destination</p>
@@ -305,7 +310,7 @@
             class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative p-4 w-full max-w-2xl max-h-full">
                 <!-- Modal content -->
-                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <div class="relative bg-white rounded-lg shadow ">
                     <!-- Modal header -->
                     <div class="flex items-center justify-between p-4 md:p-5 rounded-t dark:border-gray-600">
                         <h3 class="text-xl font-bold dark:text-white">
@@ -336,7 +341,7 @@
                             </div>
                             <input datepicker datepicker-buttons datepicker-autoselect-today type="text"
                                 name="date-pick"
-                                class="border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                class="border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Select date">
                         </div>
                         <button type="submit" class="bg-figma-btn-blue text-white rounded p-2 px-6 mt-5">Save <i
@@ -376,21 +381,29 @@
 
             var classes = $('.detail-destination, .review-section, .maps-section, .nearby-section');
             var buttonClasses = $('.btn-detail-destination, .btn-review-section, .btn-maps-section, .btn-nearby-section')
-            classes.not('.' + a).fadeOut(200);
+            classes.not('.' + a).addClass('hidden');
 
-            $('.' + a).fadeIn(200);
+            $('.' + a).removeClass('hidden');
             if (a == 'detail-destination') {
-                buttonClasses.not('.btn-detail-destination').removeClass('border-blue-500');
-                $('.btn-detail-destination').addClass('border-blue-500')
+                // buttonClasses.not('.btn-detail-destination').removeClass('border-blue-500');
+                // $('.btn-detail-destination').addClass('border-blue-500')
+                buttonClasses.not('.btn-detail-destination').removeClass('tab-active');
+                $('.btn-detail-destination').addClass('tab-active')
             } else if (a == 'review-section') {
-                buttonClasses.not('.btn-review-section').removeClass('border-blue-500');
-                $('.btn-review-section').addClass('border-blue-500')
+                // buttonClasses.not('.btn-review-section').removeClass('border-blue-500');
+                // $('.btn-review-section').addClass('border-blue-500')
+                buttonClasses.not('.btn-review-section').removeClass('tab-active');
+                $('.btn-review-section').addClass('tab-active')
             } else if (a == 'maps-section') {
-                buttonClasses.not('.btn-maps-section').removeClass('border-blue-500');
-                $('.btn-maps-section').addClass('border-blue-500')
+                // buttonClasses.not('.btn-maps-section').removeClass('border-blue-500');
+                // $('.btn-maps-section').addClass('border-blue-500')
+                buttonClasses.not('.btn-maps-section').removeClass('tab-active');
+                $('.btn-maps-section').addClass('tab-active')
             } else if (a == 'nearby-section') {
-                buttonClasses.not('.btn-nearby-section').removeClass('border-blue-500');
-                $('.btn-nearby-section').addClass('border-blue-500')
+                // buttonClasses.not('.btn-nearby-section').removeClass('border-blue-500');
+                // $('.btn-nearby-section').addClass('border-blue-500')
+                buttonClasses.not('.btn-nearby-section').removeClass('tab-active');
+                $('.btn-nearby-section').addClass('tab-active')
             }
             console.log(a);
         }
