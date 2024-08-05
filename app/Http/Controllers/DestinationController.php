@@ -117,31 +117,31 @@ class DestinationController extends Controller
   public function create(Request $request)
   {
     // dd($request->post());
-    $request->validate([
-      'title-destination' => 'required|string|max:255',
-      'description' => 'required|string',
-      'address' => 'required|string|max:255',
-      'inp-longitude' => 'required|numeric',
-      'inp-latitude' => 'required|numeric',
-      'thumbnail-file' => 'required',
-      'files' => 'required',
-      // 'files.*' => 'file',
-      'city' => 'required|string|max:255',
-      'province' => 'required|string|max:255',
-      'tag' => 'required|array',
-      'tag.*' => 'string|max:255',
-    ], [
-      'inp-longitude.required' => 'Select the Map',
-      'inp-latitude.required' => 'Select the Map',
-      'thumbnail_file.required' => 'Thumbnail is required',
-      'city.required' => 'City is required',
-      'province.required' => 'Province is required',
-      'tag.required' => 'Tag is required',
-      'files.required' => 'Photo is required',
-      'address.required' => 'Address is required',
-      'description.required' => 'Description is required',
-      'title-destination.required' => 'Title is required',
-    ]);
+    // $request->validate([
+    //   'title-destination' => 'required|string|max:255',
+    //   'description' => 'required|string',
+    //   'address' => 'required|string|max:255',
+    //   'inp-longitude' => 'required|numeric',
+    //   'inp-latitude' => 'required|numeric',
+    //   'thumbnail-file' => 'required',
+    //   'files' => 'required',
+    //   // 'files.*' => 'file',
+    //   'city' => 'required|string|max:255',
+    //   'province' => 'required|string|max:255',
+    //   'tag' => 'required|array',
+    //   'tag.*' => 'string|max:255',
+    // ], [
+    //   'inp-longitude.required' => 'Select the Map',
+    //   'inp-latitude.required' => 'Select the Map',
+    //   'thumbnail_file.required' => 'Thumbnail is required',
+    //   'city.required' => 'City is required',
+    //   'province.required' => 'Province is required',
+    //   'tag.required' => 'Tag is required',
+    //   'files.required' => 'Photo is required',
+    //   'address.required' => 'Address is required',
+    //   'description.required' => 'Description is required',
+    //   'title-destination.required' => 'Title is required',
+    // ]);
     DB::beginTransaction();
     try {
 
