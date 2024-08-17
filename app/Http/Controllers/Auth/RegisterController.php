@@ -49,6 +49,7 @@ class RegisterController extends Controller
                 'success' => true,
                 'message' => 'Registrasi Berhasil!.',
                 // 'id' => $idUserEncoded
+                'code' => 201
             ]);
         } catch (\Exception $e) {
             DB::rollback();
@@ -59,5 +60,10 @@ class RegisterController extends Controller
                 'message' => $errorMessage
             ], 400);
         }
+    }
+    public function getCsrfToken()
+    {
+        $token = Session::token();
+        return response()->json(['csrf_token' => $token]);
     }
 }
