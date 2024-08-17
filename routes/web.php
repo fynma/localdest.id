@@ -15,6 +15,8 @@ Route::controller(RegisterController::class)->group(function () {
         Route::post('/auth/' . $value, $value);
     }
 });
+Route::get('/getcsrf', [RegisterController::class, 'getCsrfToken'])->name('getCsrfToken');
+
 Route::controller(LoginController::class)->group(function () {
     foreach (['login'] as $key => $value) {
         Route::post('/auth/' . $value, $value);
