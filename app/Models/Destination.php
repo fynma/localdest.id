@@ -17,6 +17,7 @@ class Destination extends Model
         'destination_address',
         'destination_longitude',
         'destination_latitude',
+        'destination_category',
         'destination_active',
         'destination_thumbnail',
         'destination_user_id',

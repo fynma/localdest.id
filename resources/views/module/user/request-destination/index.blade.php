@@ -76,9 +76,12 @@
                     <div class="col-span-2">
                         <label for="category"
                             class="block mb-2 text-sm font-medium ">Category</label>
-                        <select name="category" id="category" disabled 
-                            class="bg-base-100 text-red-500  border border-gray-200 text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
-                            <option class="" value="" selected disabled>--On Development--</option>
+                        <select name="category" id="category" 
+                            class="bg-base-100  border border-gray-200 text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
+                            <option class="" value="" selected disabled>--Select Category--</option>
+                            <option value="1">Beach</option>
+                            <option value="2">Mountain</option>
+                            <option value="0">Other</option>
                         </select>
                     </div>
                     {{-- <div class="col-span-1">
@@ -153,7 +156,7 @@
                                     <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX.
                                         800x400px)</p>
                                 </div>
-                                <input id="dropzone-file" name="thumbnail_file" type="file" class="hidden" />
+                                <input id="dropzone-file" name="thumbnail_file" type="file" class="hidden" accept="image/*" />
                             </label>
                         </div>
                     </div>

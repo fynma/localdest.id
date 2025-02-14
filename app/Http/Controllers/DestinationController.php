@@ -196,6 +196,7 @@ class DestinationController extends Controller
         'destination_user_id' => $userId,
         'destination_city' => $data['city'],
         'destination_province' => $data['province'],
+        'destination_category' => $data['category']//onprogress
       ];
       Destination::create($destData);
       if (isset($data['tag'])) {
