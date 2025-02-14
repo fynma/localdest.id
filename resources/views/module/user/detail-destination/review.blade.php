@@ -27,7 +27,7 @@
                 <div class="flex items-center mb-10">
                     <input type="file" id="file-input" multiple style="display: none;">
                     <input type="text" name="inp-review" id="inp-review" placeholder="Add your review"
-                        class="w-3/4 rounded-full p-3 border-gray-200">
+                        class="w-3/4 rounded-full p-3 border border-gray-200">
                     <button type="button" id="btn-open-file"
                         class="button-openfile bg-figma-btn-blue rounded-full w-12 h-12 flex items-center justify-center ml-2 hover:bg-blue-500">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 36 36">
